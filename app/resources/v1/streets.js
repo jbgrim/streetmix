@@ -281,7 +281,7 @@ export async function get (req, res) {
     return
   }
 
-  res.header('Last-Modified', street.updatedAt)
+  res.header('Last-Modified', new Date(street.updatedAt).toUTCString())
   if (req.method === 'HEAD') {
     res.status(204).end()
     return
