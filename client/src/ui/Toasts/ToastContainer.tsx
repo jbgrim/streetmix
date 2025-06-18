@@ -78,6 +78,7 @@ function ToastContainer (): React.ReactElement {
         height: 0
       }
     ],
+    // @ts-expect-error don't need to type unused arguments
     onRest: (result, ctrl, item: ToastItem) => {
       dispatch(destroyToast(item.timestamp))
     },
@@ -91,9 +92,7 @@ function ToastContainer (): React.ReactElement {
     <div className="toast-container">
       {transitions(({ life, ...style }, item) => {
         function setRef<T> (ref: T | null): void {
-          if (ref !== null) {
-            refMap.set(item, ref)
-          }
+          ref !== null && refMap.set(item, ref)
         }
 
         function handleClose (event?: React.MouseEvent | Event): void {

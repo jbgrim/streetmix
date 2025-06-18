@@ -8,14 +8,6 @@ declare module '*.png' {
   export default value
 }
 
-// This is bare-bones.
-// See also: https://github.com/dacioromero/types-wm
-// and https://webmonetization.org/
-// `document.monetization` has been implemented as an unmounted `<div>` element
-export interface Monetization extends HTMLDivElement {
-  state: 'stopped' | 'pending' | 'started'
-}
-
 // Add an optional `monetization` property on Document when Web Monetization
 // API is supported or present.
 declare global {
@@ -27,4 +19,12 @@ declare global {
       refreshBtpToken: (btpToken: string) => void
     }
   }
+}
+
+// This is bare-bones.
+// See also: https://github.com/dacioromero/types-wm
+// and https://webmonetization.org/
+// `document.monetization` has been implemented as an unmounted `<div>` element
+export interface Monetization extends HTMLDivElement {
+  state: 'stopped' | 'pending' | 'started'
 }

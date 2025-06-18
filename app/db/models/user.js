@@ -28,6 +28,10 @@ export default (sequelize, DataTypes) => {
         }
       },
       email: { type: DataTypes.STRING, unique: true },
+      password: {
+        type: DataTypes.STRING,
+        allowNull: true // allow null for users who sign up via OAuth
+      },
       identities: DataTypes.JSON,
       roles: {
         type: DataTypes.ARRAY(DataTypes.TEXT),

@@ -1,7 +1,10 @@
 import { segmentsChanged } from '~/src/segments/view'
 
-import { setLastStreet, setIgnoreStreetChanges } from './data_model'
-import { prepareStreet } from './templates'
+import {
+  setLastStreet,
+  prepareStreet,
+  setIgnoreStreetChanges
+} from './data_model'
 import { saveStreetToServer } from './xhr'
 
 // These are deprecated, but we may be able to use them elsewhere

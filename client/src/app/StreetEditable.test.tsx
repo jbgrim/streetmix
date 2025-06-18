@@ -37,7 +37,6 @@ describe('StreetEditable', () => {
             initialState: {
               flags: {
                 ANALYTICS: { value: true },
-                COASTMIX_MODE: { value: false },
                 DEBUG_SEGMENT_CANVAS_RECTANGLES: { value: false }
               },
               street

@@ -5,6 +5,8 @@ import Street from './street.js'
 import User from './user.js'
 import UserConnections from './userconnections.js'
 import Vote from './vote.js'
+import Element from './element.js'
+import PavementStructure from './pavementStructure.js'
 
 const configEnv = config[process.env.NODE_ENV]
 const db = {}
@@ -29,7 +31,9 @@ const models = {
   Street,
   User,
   UserConnections,
-  Vote
+  Vote,
+  Element,
+  PavementStructure
 }
 
 Object.values(models).forEach((modelDefiner) => {

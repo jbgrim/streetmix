@@ -28,7 +28,12 @@
 }
 
 .toast-body {
-  padding-inline-end: 20px; /* Space for close button */
+  padding-right: 20px; /* Space for close button */
+
+  [dir="rtl"] & {
+    padding-left: 20px; /* Space for close button */
+    padding-right: 0;
+  }
 }
 
 .toast-message {
@@ -67,12 +72,17 @@
   width: 24px;
   height: 24px;
   padding: 0;
-  inset-block-start: 6px;
-  inset-inline-end: 6px;
+  top: 6px;
+  right: 6px;
   display: flex !important;
   justify-content: center;
   align-items: center !important;
   color: var(--close-icon-color);
+
+  [dir="rtl"] & {
+    right: auto;
+    left: 6px;
+  }
 
   &:hover {
     background-color: rgb(255 255 255 / 50%);

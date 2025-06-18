@@ -30,10 +30,8 @@ import {
 import { createSliceDragSpec, createSliceDropTargetSpec } from './drag_and_drop'
 import { getSegmentInfo } from './info'
 import { RESIZE_TYPE_INCREMENT } from './resizing'
-import TestSlope from './TestSlope'
-import './Segment.css'
-
 import type { SliceItem, UnitsSetting } from '@streetmix/types'
+import './Segment.css'
 
 interface SliceProps {
   sliceIndex: number
@@ -58,7 +56,6 @@ function Segment (props: SliceProps): React.ReactNode {
     typeof state.ui.activeSegment === 'number' ? state.ui.activeSegment : null
   )
   const capacitySource = useSelector((state) => state.street.capacitySource)
-  const coastmixMode = useSelector((state) => state.flags.COASTMIX_MODE.value)
   const dispatch = useDispatch()
 
   // What is this?
@@ -74,6 +71,7 @@ function Segment (props: SliceProps): React.ReactNode {
   // Set up drag and drop targets
   // Specs are created on each render with changed props
   const dropSpec = createSliceDropTargetSpec(props, streetSegment)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [collectedProps, drop] = useDrop(dropSpec)
   const dragSpec = createSliceDragSpec(props)
   const [collected, drag, dragPreview] = useDrag(dragSpec)
@@ -93,8 +91,10 @@ function Segment (props: SliceProps): React.ReactNode {
     // the active segment should be shown. The following IF statement checks to see if a removal
     // or drag action occurred previously to this segment and displays the infoBubble for the
     // segment if it is equal to the activeSegment and no infoBubble was shown already.
+    if (prevProps === undefined) return
+
     const wasDragging =
-      (prevProps?.isDragging && !isDragging) ||
+      (prevProps.isDragging && !isDragging) ||
       (initialRender.current && activeSegment !== null)
 
     initialRender.current = false
@@ -110,12 +110,24 @@ function Segment (props: SliceProps): React.ReactNode {
 
   useEffect(() => {
     if (
-      prevProps !== null &&
+      prevProps !== undefined &&
       prevProps.segment.variantString !== segment.variantString
     ) {
       handleSwitchSegments(prevProps.segment.variantString)
     }
   }, [segment.variantString])
+
+  // Also animate the switching if elevation changes.
+  // Maybe we don't always do this forever, but it makes it match
+  // existing elevation variant behavior
+  useEffect(() => {
+    if (
+      prevProps !== undefined &&
+      prevProps.segment.elevation !== segment.elevation
+    ) {
+      handleSwitchSegments(prevProps.segment.variantString)
+    }
+  }, [segment.elevation])
 
   // Cleanup effect
   useEffect(() => {
@@ -157,7 +169,7 @@ function Segment (props: SliceProps): React.ReactNode {
   }
 
   function decrementWidth (position: number, finetune: boolean): void {
-    dispatch(
+    void dispatch(
       incrementSegmentWidth(
         position, // slice index
         false, // subtract
@@ -168,7 +180,7 @@ function Segment (props: SliceProps): React.ReactNode {
   }
 
   function incrementWidth (position: number, finetune: boolean): void {
-    dispatch(
+    void dispatch(
       incrementSegmentWidth(
         position, // slice index
         true, // add
@@ -205,7 +217,7 @@ function Segment (props: SliceProps): React.ReactNode {
 
         // If the shift key is pressed, we remove all segments
         if (event.shiftKey) {
-          dispatch(clearSegmentsAction())
+          void dispatch(clearSegmentsAction())
           infoBubble.hide()
           dispatch(
             addToast({
@@ -228,7 +240,7 @@ function Segment (props: SliceProps): React.ReactNode {
               component: 'TOAST_UNDO'
             })
           )
-          dispatch(removeSegmentAction(sliceIndex))
+          void dispatch(removeSegmentAction(sliceIndex))
         }
         break
       default:
@@ -255,7 +267,6 @@ function Segment (props: SliceProps): React.ReactNode {
           randSeed={randSeed}
           elevation={segment.elevation}
         />
-        {coastmixMode && <TestSlope slice={segment} />}
       </div>
     )
   }

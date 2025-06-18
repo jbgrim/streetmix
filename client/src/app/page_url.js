@@ -11,7 +11,9 @@ import {
   URL_RESERVED_PREFIX,
   URL_SURVEY_FINISHED,
   RESERVED_URLS,
-  STREET_TEMPLATES
+  NEW_STREET_COPY_LAST,
+  NEW_STREET_DEFAULT,
+  NEW_STREET_EMPTY
 } from './constants'
 import { setMode, MODES } from './mode'
 
@@ -50,16 +52,15 @@ export function processUrl () {
     const params = new URLSearchParams(url.search)
     const type = params.get('type')
     switch (type) {
-      case STREET_TEMPLATES.COPY:
-        setMode(MODES.NEW_STREET_COPY_LAST, { type })
+      case NEW_STREET_COPY_LAST:
+        setMode(MODES.NEW_STREET_COPY_LAST)
         break
-      case STREET_TEMPLATES.EMPTY:
-      case STREET_TEMPLATES.HARBORWALK:
-      case STREET_TEMPLATES.COASTAL_ROAD:
-      case STREET_TEMPLATES.BEACH:
-      case STREET_TEMPLATES.DEFAULT:
+      case NEW_STREET_EMPTY:
+        setMode(MODES.NEW_STREET_EMPTY)
+        break
+      case NEW_STREET_DEFAULT:
       default:
-        setMode(MODES.NEW_STREET, { type })
+        setMode(MODES.NEW_STREET)
         break
     }
 

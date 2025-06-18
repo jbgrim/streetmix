@@ -18,11 +18,13 @@ function SegmentDragLayer (): React.ReactElement {
     isDragging: monitor.isDragging()
   }))
   const { item, type, currentOffset, isDragging } = collectedProps
-  const prevOffset = usePrevious(currentOffset)
+  const prevProps = usePrevious(collectedProps)
 
   function getDegree (
     currentOffset: typeof collectedProps.currentOffset
   ): number {
+    const prevOffset = prevProps?.currentOffset ?? null
+
     let deg
     if (currentOffset === null || prevOffset === null) {
       deg = 0

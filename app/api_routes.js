@@ -3,7 +3,7 @@ import bodyParser from 'body-parser'
 import cors from 'cors'
 import * as v1 from './resources/v1/index.js'
 import { BTPTokenCheck } from './resources/services/integrations/coil.js'
-import jwtCheck from './authentication.js'
+import { wrappedCheck as jwtCheck, wrappedAdminCheck as adminJwtCheck } from './authentication.js'
 
 // Base path of router is `/api` (see app.js)
 const router = Router()
@@ -874,6 +874,92 @@ router.get('/v1/votes', cors(), jwtCheck, v1.votes.get)
  */
 router.post('/v1/votes', cors(), jwtCheck, v1.votes.post)
 router.put('/v1/votes', cors(), jwtCheck, v1.votes.put)
+
+/**
+ * @swagger
+ * /api/v1/admin/signin:
+ *   post:
+ *     description: Signs in an admin user
+ *     tags:
+ *       - admin
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: credentials
+ *         description: Admin credentials
+ *         in: body
+ *         required: true
+ *         schema:
+ *           type: object
+ *           properties:
+ *             email:
+ *               type: string
+ *             password:
+ *               type: string
+ *     responses:
+ *       200:
+ *         description: Admin signed in
+ *         schema:
+ *           type: object
+ *           properties:
+ *             token:
+ *               type: string
+ *             user:
+ *               type: object
+ *       401:
+ *         description: Invalid credentials
+ */
+router.post('/v1/admin/signin', v1.admin.adminSignIn);
+
+router.get('/v1/admin/elements', cors(), adminJwtCheck, v1.admin.getAllElementData);
+
+router.put('/v1/admin/elements', cors(), adminJwtCheck, v1.admin.saveElementData);
+
+router.get('/v1/admin/pavement-structure', cors(), adminJwtCheck, v1.admin.getAllPavementStructureData);
+
+router.put('/v1/admin/pavement-structure', cors(), adminJwtCheck, v1.admin.savePavementStructureData);
+
+/**
+ * @swagger
+ * /api/v1/admin/password:
+ *   put:
+ *     description: Updates admin user password
+ *     tags:
+ *       - admin
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: passwordData
+ *         description: Password update data
+ *         in: body
+ *         required: true
+ *         schema:
+ *           type: object
+ *           properties:
+ *             currentPassword:
+ *               type: string
+ *             newPassword:
+ *               type: string
+ *             confirmPassword:
+ *               type: string
+ *     responses:
+ *       200:
+ *         description: Password updated successfully
+ *         schema:
+ *           type: object
+ *           properties:
+ *             message:
+ *               type: string
+ *       400:
+ *         description: Invalid input data
+ *       401:
+ *         description: Unauthorized or incorrect current password
+ *       404:
+ *         description: User not found
+ *       500:
+ *         description: Server error
+ */
+router.put('/v1/admin/password', cors(), adminJwtCheck, v1.admin.updateAdminPassword);
 
 // Catch all for all broken api paths, direct to 404 response.
 router.all(/.*/, (req, res) => {

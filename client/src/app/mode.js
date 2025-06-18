@@ -21,23 +21,18 @@ export const MODES = {
   STREET_410_BUT_LINK_TO_USER: 17,
   ABOUT: 18,
   AUTH_EXPIRED: 19,
-  SURVEY_FINISHED: 20
+  SURVEY_FINISHED: 20,
+  NEW_STREET_EMPTY: 21
 }
 
 let mode
-let modeData = {}
 
 export function getMode () {
   return mode
 }
 
-export function getModeData () {
-  return modeData
-}
-
-export function setMode (value, data = {}) {
+export function setMode (value) {
   mode = value
-  modeData = data
 }
 
 export function processMode () {
@@ -76,6 +71,7 @@ export function processMode () {
       showError(ERRORS.FORCE_RELOAD_SIGN_IN, true)
       break
     case MODES.NEW_STREET:
+    case MODES.NEW_STREET_EMPTY:
     case MODES.NEW_STREET_COPY_LAST:
       setServerContacted(false)
       break

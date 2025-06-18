@@ -9,8 +9,8 @@
 
   /* TODO: use button trigger to set initial position,
      and remember position on a per-session basis */
-  inset-block-end: 90px;
-  inset-inline-start: 50px;
+  bottom: 90px;
+  left: 50px;
   max-width: 216px; /* prevent upgrade text from expanding width */
 }
 
@@ -20,6 +20,11 @@
   overflow: hidden;
   box-shadow: var(--sky-picker-box-shadow);
   user-select: none;
+
+  [dir="rtl"] & {
+    left: auto;
+    right: 50px;
+  }
 }
 
 .sky-picker header {
@@ -42,8 +47,13 @@
 .sky-picker header img {
   height: 16px;
   width: auto;
-  margin-inline-start: 0.5em;
+  margin-left: 0.5em;
   pointer-events: none;
+
+  [dir="rtl"] & {
+    margin-right: 0.5em;
+    margin-left: auto;
+  }
 }
 
 .sky-picker header h3 {
@@ -58,9 +68,14 @@
   font-size: 1em;
 
   [data-icon="sun"] {
-    margin-inline-end: 0.5em;
+    margin-right: 0.5em;
     width: 16px;
     height: 16px;
+
+    [dir="rtl"] & {
+      margin-left: 0.5em;
+      margin-right: auto;
+    }
   }
 }
 

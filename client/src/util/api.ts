@@ -159,6 +159,7 @@ class APIClient {
   getGeoIp = async (): APIResponse => {
     return await this.client.get(`${BASE_URL_SERVICES}/geoip`)
   }
+
 }
 
 const client = new APIClient()
@@ -182,7 +183,7 @@ export const {
   postSentimentSurveyVote,
   putSentimentSurveyComment,
   getChangelog,
-  getGeoIp
+  getGeoIp,
 } = client
 
 export default client

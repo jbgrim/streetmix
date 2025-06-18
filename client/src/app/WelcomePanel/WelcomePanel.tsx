@@ -96,6 +96,7 @@ function WelcomePanel (): React.ReactElement | null {
 
       if (
         getMode() === MODES.NEW_STREET ||
+        getMode() === MODES.NEW_STREET_EMPTY ||
         getMode() === MODES.NEW_STREET_COPY_LAST
       ) {
         if (isSignedIn() || isReturningUser) {

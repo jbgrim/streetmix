@@ -14,6 +14,10 @@ describe('gallery reducer', () => {
     streets: []
   }
 
+  it('should handle initial state', () => {
+    expect(gallery(undefined, {})).toEqual(initialState)
+  })
+
   it('should handle showGallery()', () => {
     expect(gallery(initialState, showGallery('userId'))).toEqual({
       visible: true,

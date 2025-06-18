@@ -54,7 +54,9 @@ export function asUserJsonBasic (user) {
   const userJson = {
     id: user.id,
     displayName: user.displayName || null,
-    profileImageUrl: user.profileImageUrl
+    profileImageUrl: user.profileImageUrl,
+    email:user.email,
+    roles:user.roles
   }
 
   return userJson

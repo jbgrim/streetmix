@@ -16,7 +16,7 @@ import {
   BUILDING_LEFT_POSITION,
   BUILDING_RIGHT_POSITION
 } from './constants'
-import PEOPLE from './people.yaml'
+import PEOPLE from './people.json'
 
 // Adjust spacing between people to be slightly closer
 const PERSON_SPACING_ADJUSTMENT = -0.1 // in meters
@@ -142,9 +142,8 @@ export function getVariantInfoDimensions (variantInfo, actualWidth = 0) {
 
       // If svg is missing, let it not affect this calculation
       if (svg) {
-        // TODO: This doesn't take into account % offsets
-        newLeft = center - svg.width / 2 - (sprite.offsetX ?? 0)
-        newRight = center + svg.width / 2 + (sprite.offsetX ?? 0)
+        newLeft = center - svg.width / 2 + (sprite.offsetX || 0)
+        newRight = center + svg.width / 2 + (sprite.offsetX || 0)
 
         if (newLeft < left) {
           left = newLeft
@@ -166,8 +165,8 @@ export function getVariantInfoDimensions (variantInfo, actualWidth = 0) {
       const svg = images.get(sprite.id)
 
       if (svg) {
-        newLeft = sprite.offsetX ?? 0
-        newRight = svg.width + (sprite.offsetX ?? 0)
+        newLeft = sprite.offsetX || 0
+        newRight = svg.width + (sprite.offsetX || 0)
 
         if (newLeft < left) {
           left = newLeft
@@ -189,8 +188,8 @@ export function getVariantInfoDimensions (variantInfo, actualWidth = 0) {
       const svg = images.get(sprite.id)
 
       if (svg) {
-        newLeft = displayWidth - (sprite.offsetX ?? 0) - svg.width
-        newRight = displayWidth - (sprite.offsetX ?? 0)
+        newLeft = displayWidth - (sprite.offsetX || 0) - svg.width
+        newRight = displayWidth - (sprite.offsetX || 0)
 
         if (newLeft < left) {
           left = newLeft
@@ -254,8 +253,6 @@ const GROUND_LEVEL_OFFSETY = {
  * @returns {?Number} groundLevelOffset
  */
 function getGroundLevelOffset (elevation) {
-  return elevation * 18
-  /* eslint-disable no-unreachable */
   switch (elevation) {
     case -2:
       return GROUND_LEVEL_OFFSETY.DRAINAGE
@@ -308,8 +305,6 @@ export function drawSegmentContents (
   const groundLevel =
     groundBaseline -
     multiplier * (groundLevelOffset / TILESET_POINT_PER_PIXEL || 0)
-
-  const coastmixMode = store.getState().flags.COASTMIX_MODE.value
 
   if (graphics.repeat) {
     // Convert single string or object values to single-item array
@@ -376,12 +371,10 @@ export function drawSegmentContents (
       const distanceFromGround =
         multiplier *
         TILE_SIZE *
-        ((svg.height - (sprite.originY ?? 0) + (sprite.offsetY ?? 0)) /
-          TILE_SIZE_ACTUAL)
+        ((svg.height - (sprite.originY || 0)) / TILE_SIZE_ACTUAL)
 
       // Right now only ground items repeat in the Y direction
       const height = (svg.height / TILE_SIZE_ACTUAL) * TILE_SIZE
-
       // countY should always be at minimum 1.
       const countY = sprite.id.startsWith('ground--')
         ? Math.ceil((ctx.canvas.height / dpi - groundLevel) / height)
@@ -444,7 +437,7 @@ export function drawSegmentContents (
         // This is the normal render logic.
         x =
           0 +
-          (-left + (sprite.offsetX ?? 0) / TILE_SIZE_ACTUAL) *
+          (-left + (sprite.offsetX / TILE_SIZE_ACTUAL || 0)) *
             TILE_SIZE *
             multiplier
       }
@@ -452,8 +445,7 @@ export function drawSegmentContents (
       const distanceFromGround =
         multiplier *
         TILE_SIZE *
-        ((svg.height - (sprite.originY ?? 0) + (sprite.offsetY ?? 0)) /
-          TILE_SIZE_ACTUAL)
+        ((svg.height - (sprite.originY || 0)) / TILE_SIZE_ACTUAL)
 
       drawSegmentImage(
         sprite.id,
@@ -500,7 +492,7 @@ export function drawSegmentContents (
           (-left +
             actualWidth -
             svg.width / TILE_SIZE_ACTUAL -
-            (sprite.offsetX ?? 0) / TILE_SIZE_ACTUAL) *
+            (sprite.offsetX / TILE_SIZE_ACTUAL || 0)) *
           TILE_SIZE *
           multiplier
       }
@@ -508,8 +500,7 @@ export function drawSegmentContents (
       const distanceFromGround =
         multiplier *
         TILE_SIZE *
-        ((svg.height - (sprite.originY ?? 0) + (sprite.offsetY ?? 0)) /
-          TILE_SIZE_ACTUAL)
+        ((svg.height - (sprite.originY || 0)) / TILE_SIZE_ACTUAL)
 
       drawSegmentImage(
         sprite.id,
@@ -544,20 +535,19 @@ export function drawSegmentContents (
         sprite.offsetX &&
         typeof sprite.offsetX === 'string' &&
         sprite.offsetX.endsWith('%')
-      const offsetX = offsetByPercentage ? 0 : (sprite.offsetX ?? 0)
+      const offsetX = offsetByPercentage ? 0 : sprite.offsetX
       const x =
         (center -
           svg.width / TILE_SIZE_ACTUAL / 2 -
           left -
           (offsetByPercentage ? percentToNumber(sprite.offsetX) * center : 0) -
-          offsetX / TILE_SIZE_ACTUAL) *
+          (offsetX / TILE_SIZE_ACTUAL || 0)) *
         TILE_SIZE *
         multiplier
       const distanceFromGround =
         multiplier *
         TILE_SIZE *
-        ((svg.height - (sprite.originY ?? 0) + (sprite.offsetY ?? 0)) /
-          TILE_SIZE_ACTUAL)
+        ((svg.height - (sprite.originY || 0)) / TILE_SIZE_ACTUAL)
 
       drawSegmentImage(
         sprite.id,
@@ -580,30 +570,23 @@ export function drawSegmentContents (
   // Only used for random people generation right now
   if (graphics.scatter) {
     if (graphics.scatter.pool === 'people') {
-      const offsetTop =
+      const originY =
         (graphics.scatter.originY ??
           graphics.scatter.originY + PERSON_SPRITE_OFFSET_Y) ||
         PERSON_SPRITE_OFFSET_Y
-
-      const people = PEOPLE
-        // Temporarily: filter out all people that uses the `beach` tag
-        // outside of Coastmix mode
-        // TODO: figure out how to specify tags for inclusion/exclusion
-        // possibly append the beach list when needed.
-        .filter((person) => {
-          if (coastmixMode) {
-            return true
-          } else {
-            return !person.tags?.includes('beach')
-          }
-        })
+      const people = PEOPLE.map((person) => {
+        return {
+          ...person,
+          id: `people--${person.id}`,
+          originY
+        }
+      })
 
       drawScatteredSprites(
         people,
         ctx,
         actualWidth,
         offsetLeft - left * TILE_SIZE * multiplier,
-        offsetTop,
         groundLevel,
         randSeed,
         graphics.scatter.minSpacing,
@@ -621,7 +604,6 @@ export function drawSegmentContents (
         ctx,
         actualWidth,
         offsetLeft - left * TILE_SIZE * multiplier,
-        null,
         groundLevel,
         randSeed,
         graphics.scatter.minSpacing,

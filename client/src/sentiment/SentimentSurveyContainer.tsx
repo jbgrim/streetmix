@@ -68,7 +68,9 @@ function SentimentSurveyContainer (): React.ReactElement | null {
       <SentimentSurvey
         visible={isVisible}
         onClose={handleClose}
-        handleVote={handleVote}
+        handleVote={(score) => {
+          void handleVote(score)
+        }}
         streetId={streetId}
       />
     )

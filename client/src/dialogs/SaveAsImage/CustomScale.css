@@ -14,8 +14,13 @@
   display: flex;
   flex-grow: unset;
   font-weight: 550;
-  margin-inline-end: 1em;
-  margin-block-start: 0.25em;
+  margin-right: 1em;
+  margin-top: 0.25em;
+
+  [dir="rtl"] & {
+    margin-left: 1em;
+    margin-right: 0;
+  }
 }
 
 .custom-scale-popover {

@@ -1,6 +1,5 @@
-import { randomUUID } from 'node:crypto'
 import Sequelize from 'sequelize'
-
+import { v4 as uuidv4 } from 'uuid'
 import models from '../../db/models/index.js'
 import logger from '../../lib/logger.js'
 
@@ -261,7 +260,7 @@ export async function post (req, res) {
 
   // If requesting user is logged in, create a new vote
   const ballot = {
-    id: randomUUID()
+    id: uuidv4()
   }
 
   let savedBallot = {}

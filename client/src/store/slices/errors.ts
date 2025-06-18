@@ -21,7 +21,7 @@ const errorsSlice = createSlice({
         state.errorType = action.payload.errorType
         state.abortEverything = action.payload.abortEverything || false
       },
-      prepare (errorType: number | null, abortEverything: boolean = false) {
+      prepare (errorType: number | null, abortEverything: boolean) {
         return {
           payload: {
             errorType,
@@ -31,7 +31,7 @@ const errorsSlice = createSlice({
       }
     },
 
-    hideError (state) {
+    hideError (state, action) {
       state.errorType = null
       state.abortEverything = false
     }

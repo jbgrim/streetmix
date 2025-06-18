@@ -2,6 +2,10 @@ import { vi } from 'vitest'
 import toasts, { addToast, destroyToast } from './toasts'
 
 describe('toasts reducer', () => {
+  it('should handle initial state', () => {
+    expect(toasts(undefined, {})).toEqual([])
+  })
+
   it('should handle addToast()', () => {
     // Set fake time to 0
     const date = 0
@@ -35,7 +39,7 @@ describe('toasts reducer', () => {
         }
       ],
       addToast({
-        component: 'TOAST_UNDO',
+        component: 'COMPONENT_NAME',
         method: 'success',
         action: 'Foo button',
         message: 'Toast message 2',
@@ -49,7 +53,7 @@ describe('toasts reducer', () => {
         timestamp: 0
       },
       {
-        component: 'TOAST_UNDO',
+        component: 'COMPONENT_NAME',
         method: 'success',
         action: 'Foo button',
         message: 'Toast message 2',
@@ -70,9 +74,10 @@ describe('toasts reducer', () => {
           timestamp: 0
         },
         {
-          component: 'TOAST_UNDO',
+          component: 'COMPONENT_NAME',
           method: 'warning',
           action: 'Foo button',
+          message: 'Toast message 2',
           duration: 2000,
           timestamp: 30
         }
@@ -90,9 +95,10 @@ describe('toasts reducer', () => {
         timestamp: 0
       },
       {
-        component: 'TOAST_UNDO',
+        component: 'COMPONENT_NAME',
         method: 'warning',
         action: 'Foo button',
+        message: 'Toast message 2',
         duration: 2000,
         timestamp: 30
       },
@@ -117,9 +123,10 @@ describe('toasts reducer', () => {
           timestamp: 1
         },
         {
-          component: 'TOAST_UNDO',
+          component: 'COMPONENT_NAME',
           method: 'warning',
           action: 'Foo button',
+          message: 'Toast message 2',
           duration: 2000,
           timestamp: 2
         },

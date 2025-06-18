@@ -108,6 +108,7 @@ function Credits (): React.ReactElement {
                 />
               </h3>
               <ul>
+                {/* eslint-disable-next-line @typescript-eslint/require-array-sort-compare */}
                 {value.sort().map((name) =>
                   Array.isArray(name)
                     ? (
@@ -157,6 +158,7 @@ function Credits (): React.ReactElement {
                   />
                 </h4>
                 <ul>
+                  {/* eslint-disable-next-line @typescript-eslint/require-array-sort-compare */}
                   {value.sort().map((name) =>
                     Array.isArray(name)
                       ? (

@@ -6,7 +6,6 @@ import {
 } from '../app/initialization'
 import { formatMessage } from '../locales/locale'
 import { MODES, processMode, getMode, setMode } from '../app/mode'
-import { STREET_TEMPLATES } from '../app/constants'
 import { goNewStreet } from '../app/routing'
 import { infoBubble } from '../info_bubble/info_bubble'
 import { app } from '../preinit/app_settings'
@@ -35,6 +34,7 @@ import { addToast } from '../store/slices/toasts'
 import { resetUndoStack } from '../store/slices/history'
 import { makeDefaultStreet } from './creation'
 import {
+  prepareStreet,
   trimStreetData,
   updateEverything,
   addAltVariantObject,
@@ -43,7 +43,6 @@ import {
   setLastStreet,
   setIgnoreStreetChanges
 } from './data_model'
-import { prepareStreet } from './templates'
 import {
   getRemixOnFirstEdit,
   setRemixOnFirstEdit,
@@ -68,8 +67,8 @@ export function setSaveStreetIncomplete (value) {
 
 let latestRequestId
 
-export async function createNewStreetOnServer (type = STREET_TEMPLATES.DEFAULT) {
-  prepareStreet(type)
+export async function createNewStreetOnServer (isEmpty = false) {
+  prepareStreet(isEmpty ? 'empty' : 'default')
 
   const transmission = packServerStreetDataRaw()
 
