@@ -13,8 +13,12 @@ describe('settings reducer', () => {
     saveAsImageStreetName: false,
     saveAsImageWatermark: true,
     locale: null,
-    units: 0
+    units: null
   }
+
+  it('should handle initial state', () => {
+    expect(settings(undefined, {})).toEqual(initialState)
+  })
 
   it('should handle updateSettings()', () => {
     expect(
@@ -36,7 +40,7 @@ describe('settings reducer', () => {
       saveAsImageStreetName: false,
       saveAsImageWatermark: true,
       locale: null,
-      units: 0
+      units: null
     })
 
     // Handle empty objects, and null or undefined values
@@ -81,7 +85,7 @@ describe('settings reducer', () => {
       saveAsImageSegmentNamesAndWidths: false,
       saveAsImageStreetName: false,
       saveAsImageWatermark: true,
-      units: 0,
+      units: null,
       locale: 'fi'
     })
   })

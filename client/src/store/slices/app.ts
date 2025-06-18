@@ -1,15 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
-import type { ContentDirection } from '~/src/types'
-
 import { changeLocale } from './locale'
-
 import type { PayloadAction } from '@reduxjs/toolkit'
 
 interface AppState {
   readOnly: boolean
   printing: boolean
   everythingLoaded: boolean
-  contentDirection: ContentDirection
+  contentDirection: 'ltr' | 'rtl'
   priorLastStreetId: string | null
 }
 
@@ -30,7 +27,7 @@ const appSlice = createSlice({
   initialState,
 
   reducers: {
-    setAppFlags (state, action: PayloadAction<Partial<AppState>>) {
+    setAppFlags (state, action: PayloadAction<AppState>) {
       return {
         ...state,
         ...action.payload

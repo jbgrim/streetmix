@@ -47,4 +47,4 @@ root.render(
   </Provider>
 )
 
-initialize()
+void initialize()

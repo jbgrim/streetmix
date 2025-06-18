@@ -3,7 +3,6 @@ import debounce from 'just-debounce-it'
 
 import Button from '~/src/ui/Button'
 import Icon from '~/src/ui/Icon'
-import { Tooltip } from '~/src/ui/Tooltip'
 import './UpDownInput.css'
 
 const EDIT_INPUT_DELAY = 200
@@ -12,8 +11,8 @@ interface UpDownInputProps {
   // Raw input value must always be a number type which can be
   // compared with the minValue and maxValue. Can be null.
   value: number | null
-  minValue?: number
-  maxValue?: number
+  minValue: number
+  maxValue: number
 
   // Formatter functions are used to optionally format raw values
   // for display. These functions should return a number or a string.
@@ -44,8 +43,6 @@ interface UpDownInputProps {
   inputTooltip?: string
   upTooltip?: string
   downTooltip?: string
-  upTooltipSublabel?: string
-  downTooltipSublabel?: string
 
   // If enabled, allow auto-update of values during input. This can
   // currently cause buggy and unexpected behavior, so it's disabled
@@ -68,8 +65,6 @@ function UpDownInput (props: UpDownInputProps): React.ReactElement {
     inputTooltip = 'Change value',
     upTooltip = 'Increment',
     downTooltip = 'Decrement',
-    upTooltipSublabel,
-    downTooltipSublabel,
     allowAutoUpdate = false
   } = props
 
@@ -296,26 +291,17 @@ function UpDownInput (props: UpDownInputProps): React.ReactElement {
 
   return (
     <div className="up-down-input">
-      <Tooltip
-        label={downTooltip}
-        sublabel={downTooltipSublabel}
-        placement="bottom"
+      <Button
+        className="up-down-input-decrement"
+        title={downTooltip}
+        tabIndex={-1}
+        onClick={handleClickDecrement}
+        disabled={
+          disabled || (value !== null && minValue ? value <= minValue : false)
+        }
       >
-        <Button
-          className="up-down-input-decrement"
-          data-testid="down"
-          tabIndex={-1}
-          onClick={handleClickDecrement}
-          disabled={
-            disabled ||
-            (value !== null && minValue !== undefined
-              ? value <= minValue
-              : false)
-          }
-        >
-          <Icon name="minus" />
-        </Button>
-      </Tooltip>
+        <Icon name="minus" />
+      </Button>
       <input
         type="text"
         className="up-down-input-element"
@@ -331,26 +317,17 @@ function UpDownInput (props: UpDownInputProps): React.ReactElement {
         onKeyDown={handleInputKeyDown}
         ref={inputEl}
       />
-      <Tooltip
-        label={upTooltip}
-        sublabel={upTooltipSublabel}
-        placement="bottom"
+      <Button
+        className="up-down-input-increment"
+        title={upTooltip}
+        tabIndex={-1}
+        onClick={handleClickIncrement}
+        disabled={
+          disabled || (value !== null && maxValue ? value >= maxValue : false)
+        }
       >
-        <Button
-          className="up-down-input-increment"
-          data-testid="up"
-          tabIndex={-1}
-          onClick={handleClickIncrement}
-          disabled={
-            disabled ||
-            (value !== null && maxValue !== undefined
-              ? value >= maxValue
-              : false)
-          }
-        >
-          <Icon name="plus" />
-        </Button>
-      </Tooltip>
+        <Icon name="plus" />
+      </Button>
     </div>
   )
 }

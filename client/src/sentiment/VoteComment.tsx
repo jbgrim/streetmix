@@ -60,7 +60,9 @@ function VoteComment ({ streetId }: VoteCommentProps): React.ReactElement {
           : (
             <Button
               secondary
-              onClick={handleSubmitComment}
+              onClick={() => {
+                void handleSubmitComment()
+              }}
             >
               <FormattedMessage
                 id="sentiment.comment.submit"

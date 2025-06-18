@@ -11,7 +11,7 @@ function Gallery (): React.ReactElement {
   const { visible, instant } = useSelector((state) => state.gallery)
   const dispatch = useDispatch()
   const hide = useCallback(() => {
-    dispatch(closeGallery())
+    void dispatch(closeGallery())
   }, [dispatch])
 
   useEffect(() => {

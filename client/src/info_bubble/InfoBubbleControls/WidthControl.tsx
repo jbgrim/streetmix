@@ -28,13 +28,13 @@ function WidthControl ({ position }: WidthControlProps): React.ReactElement {
   const handleIncrement = (event: React.MouseEvent): void => {
     const precise = event.shiftKey
 
-    dispatch(incrementSegmentWidth(position, true, precise))
+    void dispatch(incrementSegmentWidth(position, true, precise))
   }
 
   const handleDecrement = (event: React.MouseEvent): void => {
     const precise = event.shiftKey
 
-    dispatch(incrementSegmentWidth(position, false, precise))
+    void dispatch(incrementSegmentWidth(position, false, precise))
   }
 
   /**
@@ -85,19 +85,11 @@ function WidthControl ({ position }: WidthControlProps): React.ReactElement {
         })}
         upTooltip={intl.formatMessage({
           id: 'tooltip.increase-width',
-          defaultMessage: 'Increase width'
+          defaultMessage: 'Increase width (hold Shift for more precision)'
         })}
         downTooltip={intl.formatMessage({
           id: 'tooltip.decrease-width',
-          defaultMessage: 'Decrease width'
-        })}
-        upTooltipSublabel={intl.formatMessage({
-          id: 'tooltip.width-tooltip-sublabel',
-          defaultMessage: '(hold Shift for more precision)'
-        })}
-        downTooltipSublabel={intl.formatMessage({
-          id: 'tooltip.width-tooltip-sublabel',
-          defaultMessage: '(hold Shift for more precision)'
+          defaultMessage: 'Decrease width (hold Shift for more precision)'
         })}
       />
     </div>

@@ -50,11 +50,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-inline-end: 0.3em;
+  margin-right: 0.3em;
 
   svg {
     width: 16px;
     height: 16px;
+  }
+
+  [dir="rtl"] & {
+    margin-left: 0.3em;
+    margin-right: auto;
   }
 
   [data-icon-source="feather"] {

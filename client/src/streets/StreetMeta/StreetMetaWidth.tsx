@@ -99,7 +99,7 @@ function StreetMetaWidthNew (): React.ReactElement | null {
 
     // Change width to the desired selection
     if (newWidth) {
-      dispatch(updateStreetWidth(newWidth))
+      void dispatch(updateStreetWidth(newWidth))
     }
   }
 
@@ -143,7 +143,7 @@ function StreetMetaWidthNew (): React.ReactElement | null {
       units
     )
 
-    dispatch(updateStreetWidth(newWidth))
+    void dispatch(updateStreetWidth(newWidth))
   }
 
   const DefaultWidthOptions = (): React.ReactElement[] =>

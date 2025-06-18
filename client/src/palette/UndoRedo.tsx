@@ -34,7 +34,7 @@ function UndoRedo (): React.ReactElement {
       >
         <Button
           onClick={() => {
-            dispatch(handleUndo())
+            void dispatch(handleUndo())
           }}
           disabled={!isUndoAvailable()}
           data-testid="undo"
@@ -47,7 +47,7 @@ function UndoRedo (): React.ReactElement {
       >
         <Button
           onClick={() => {
-            dispatch(handleRedo())
+            void dispatch(handleRedo())
           }}
           disabled={!isRedoAvailable()}
           data-testid="redo"

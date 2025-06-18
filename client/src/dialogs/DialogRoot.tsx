@@ -11,11 +11,13 @@ import GeotagDialog from './Geotag'
 import SaveAsImageDialog from './SaveAsImage'
 import SettingsDialog from './Settings'
 import SignInDialog from './SignIn'
+import AdminSignInDialog from './AdminSignIn'
 import WhatsNewDialog from './WhatsNew'
 import NewsletterDialog from './Newsletter'
 import UpgradeDialog from './Upgrade'
 import SentimentSurveyDialog from './SentimentSurvey'
 import ErrorDialog from './ErrorDialog'
+import AdminConfigurationDialog from './AdminConfigurations'
 
 const DIALOG_COMPONENTS = {
   ABOUT: AboutDialog,
@@ -25,10 +27,12 @@ const DIALOG_COMPONENTS = {
   SAVE_AS_IMAGE: SaveAsImageDialog,
   SETTINGS: SettingsDialog,
   SIGN_IN: SignInDialog,
+  ADMIN_SIGN_IN: AdminSignInDialog,
   WHATS_NEW: WhatsNewDialog,
   NEWSLETTER: NewsletterDialog,
   UPGRADE: UpgradeDialog,
-  SENTIMENT_SURVEY: SentimentSurveyDialog
+  SENTIMENT_SURVEY: SentimentSurveyDialog,
+  ADMIN_CONFIGURATION: AdminConfigurationDialog
 }
 
 function DialogRoot (): React.ReactElement | null {

@@ -22,7 +22,7 @@ export function onNoConnection (event) {
   store.dispatch(
     addToast({
       component: 'TOAST_NO_CONNECTION',
-      method: 'warning',
+      mode: 'warning',
       duration: Infinity
     })
   )

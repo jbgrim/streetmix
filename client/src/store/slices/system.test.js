@@ -9,6 +9,10 @@ describe('system reducer', () => {
     devicePixelRatio: 1
   }
 
+  it('should handle initial state', () => {
+    expect(system(undefined, {})).toEqual(initialState)
+  })
+
   it('should handle setSystemFlags()', () => {
     expect(
       system(

@@ -88,7 +88,7 @@ function ProfileSettings (): React.ReactElement | null {
 
   function handleSubmit (event: React.FormEvent): void {
     event.preventDefault()
-    handleSaveDisplayName()
+    void handleSaveDisplayName()
   }
 
   // Not signed-in users shouldn't see this,
@@ -192,7 +192,9 @@ function ProfileSettings (): React.ReactElement | null {
               </p>
               <div className="profile-settings-button">
                 <Button
-                  onClick={handleSaveDisplayName}
+                  onClick={() => {
+                    void handleSaveDisplayName()
+                  }}
                   primary
                   disabled={isPending}
                 >

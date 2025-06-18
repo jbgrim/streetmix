@@ -3,7 +3,7 @@ import bodyParser from 'body-parser'
 import cors from 'cors'
 import * as controllers from './controllers/index.js'
 import * as services from './resources/services/index.js'
-import jwtCheck from './authentication.js'
+import { wrappedCheck as jwtCheck } from './authentication.js'
 
 // Base path of router is `/services` (see app.js)
 const router = Router()

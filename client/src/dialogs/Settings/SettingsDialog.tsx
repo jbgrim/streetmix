@@ -7,6 +7,7 @@ import { ENV } from '~/src/app/config'
 import Icon from '~/src/ui/Icon'
 import USER_ROLES from '../../../../app/data/user_roles.json'
 import Dialog from '../Dialog'
+import AdminResetPassword from './AdminResetPassword'
 import FeatureFlagSettings from './FeatureFlagSettings'
 import GeneralSettings from './GeneralSettings'
 import LanguageSettings from './LanguageSettings'
@@ -43,6 +44,9 @@ function SettingsDialog ({
 
   let SettingsPanel
   switch (activeCategory) {
+    case 'admin-password-reset':
+      SettingsPanel = <AdminResetPassword />
+      break
     case 'feature-flags':
       SettingsPanel = <FeatureFlagSettings />
       break
@@ -137,6 +141,24 @@ function SettingsDialog ({
                       <Icon name="flag" className="settings-menu-icon" />
                       {/* Not translated, on purpose */}
                       Feature flags
+                    </li>
+                  )}
+                  {roles.includes(USER_ROLES.ADMIN.value) && (
+                    <li
+                      onClick={() => {
+                        handleSelectCategory('admin-password-reset')
+                      }}
+                      className={
+                        activeCategory === 'admin-password-reset'
+                          ? 'settings-menu-active'
+                          : ''
+                      }
+                    >
+                      <Icon name="lock" className="settings-menu-icon" />
+                      <FormattedMessage
+                        id="settings.admin.password-reset.label"
+                        defaultMessage="Password Reset"
+                      />
                     </li>
                   )}
                 </ul>

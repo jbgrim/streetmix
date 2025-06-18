@@ -1,5 +1,4 @@
-import { randomUUID } from 'node:crypto'
-
+import { v4 as uuidv4 } from 'uuid'
 import models from '../../db/models/index.js'
 import logger from '../../lib/logger.js'
 import { ERRORS, asStreetJson } from '../../lib/util.js'
@@ -10,7 +9,7 @@ const { User, Street, Sequence } = models
 export async function post (req, res) {
   let body
   const street = {}
-  street.id = randomUUID()
+  street.id = uuidv4()
   const requestIp = function (req) {
     if (req.headers['x-forwarded-for'] !== undefined) {
       return req.headers['x-forwarded-for'].split(', ')[0]
@@ -282,7 +281,7 @@ export async function get (req, res) {
     return
   }
 
-  res.header('Last-Modified', street.updatedAt)
+  res.header('Last-Modified', new Date(street.updatedAt).toUTCString())
   if (req.method === 'HEAD') {
     res.status(204).end()
     return
