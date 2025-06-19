@@ -66,6 +66,7 @@
     "packageExports": true
   },
   "dependencies": {
+    "@react-pdf/renderer": "4.3.0",
     "axios": "1.9.0",
     "axios-retry": "4.5.0",
     "chalk": "5.4.1",

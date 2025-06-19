@@ -526,5 +526,12 @@
       "zh-hans": "Chinois simplifié",
       "zh-hant": "Chinois traditionnel"
     }
+  },
+  "cost": {
+    "title": "Résumé des coûts",
+    "price": "Prix : {price}",
+    "co2": "Émissions : {co2}CO2",
+    "cost": "Coût de construction",
+    "thirtyYears": "Coût sur 30 ans"
   }
 }

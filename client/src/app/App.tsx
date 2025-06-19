@@ -25,6 +25,7 @@ import WelcomePanel from './WelcomePanel'
 import NotificationBar from './NotificationBar'
 import Loading from './Loading'
 import SponsorBanner from './SponsorBanner'
+import StreetCost from '~src/streets/StreetCost/StreetCost'
 
 function App (): React.ReactElement {
   const [isLoading, setLoading] = useState(true)
@@ -78,6 +79,7 @@ function App (): React.ReactElement {
                 <MenusContainer />
                 <StreetNameplateContainer />
                 <InfoBubble />
+                <StreetCost />
                 <DebugHoverPolygon />
                 <WelcomePanel />
                 <PaletteContainer />
