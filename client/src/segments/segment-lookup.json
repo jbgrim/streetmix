@@ -8,6 +8,7 @@
       "metric": 1.8,
       "imperial": 6
     },
+    "defaultMaterial": "trottoir",
     "rules": {
       "minWidth": {
         "metric": 1.8,
@@ -101,6 +102,7 @@
       "metric": 1.2,
       "imperial": 4
     },
+    "defaultMaterial": "trottoir",
     "variants": ["tree-type"],
     "details": {
       "big": {
@@ -154,6 +156,7 @@
       "metric": 1.2,
       "imperial": 4
     },
+    "defaultMaterial": "trottoir",
     "defaultVariant": "both|traditional",
     "variants": ["lamp-orientation", "lamp-type"],
     "details": {
@@ -366,6 +369,7 @@
       "metric": 0.5,
       "imperial": 2
     },
+    "defaultMaterial": "trottoir",
     "defaultVariant": "flowers",
     "variants": ["divider-type"],
     "details": {
@@ -650,6 +654,7 @@
       "metric": 3,
       "imperial": 10
     },
+    "defaultMaterial": "lowTrafic",
     "defaultVariant": "zebra-crossing",
     "defaultElevation": 0,
     "enableElevation": true,
@@ -700,6 +705,7 @@
       "metric": 0.5,
       "imperial": 2
     },
+    "defaultMaterial": "lowTrafic",
     "defaultVariant": "traffic-cone",
     "variants": ["temporary-barrier-type"],
     "details": {
@@ -801,6 +807,7 @@
       "metric": 1,
       "imperial": 3.25
     },
+    "defaultMaterial": "drainage",
     "variants": ["drainage-sides"],
     "details": {
       "slanted": {
@@ -854,6 +861,7 @@
       "metric": 1.8,
       "imperial": 6
     },
+    "defaultMaterial": "bike",
     "description": {
       "key": "bike-lane",
       "image": "bike-lane-02.jpg"
@@ -1733,6 +1741,7 @@
       "metric": 2,
       "imperial": 7
     },
+    "defaultMaterial": "lowTrafic",
     "rules": {
       "minWidth": {
         "metric": 2.1,
@@ -2180,6 +2189,7 @@
       "metric": 3,
       "imperial": 10
     },
+    "defaultMaterial": "lowTrafic",
     "rules": {
       "minWidth": {
         "metric": 2.4,
@@ -2832,6 +2842,7 @@
       "metric": 3,
       "imperial": 10
     },
+    "defaultMaterial": "lowTrafic",
     "rules": {
       "minWidth": {
         "metric": 2.7,
@@ -3273,6 +3284,7 @@
       "metric": 3.6,
       "imperial": 12
     },
+    "defaultMaterial": "heavyTrafic",
     "rules": {
       "minWidth": {
         "metric": 3,
@@ -3920,6 +3932,7 @@
       "metric": 3.6,
       "imperial": 12
     },
+    "defaultMaterial": "tram",
     "rules": {
       "minWidth": {
         "metric": 3,
@@ -4127,6 +4140,7 @@
       "metric": 3.5,
       "imperial": 11.667
     },
+    "defaultMaterial": "heavyTrafic",
     "rules": {
       "minWidth": {
         "metric": 3.4,
@@ -4240,5 +4254,16 @@
         }
       }
     }
+  },
+  "block": {
+    "name": "Block Fonctionnel",
+    "nameKey": "block",
+    "owner": "UTILITY",
+    "zIndex": 15,
+    "defaultWidth": {
+      "metric": 3.5,
+      "imperial": 11.667
+    },
+    "defaultMaterial": "default"
   }
 }

@@ -16,8 +16,26 @@ export interface Segment {
   variant: Record<string, string>
   warnings: boolean[]
   label?: string
+  material: string
 }
+
 export type SliceItem = Segment // Alias for future use
+
+export interface Material {
+  id: string
+  cost: {
+    co2: number
+    price: number
+    fixedCo2: number
+    fixedPrice: number
+  }
+  thirtyYears: {
+    co2: number
+    price: number
+    fixedCo2: number
+    fixedPrice: number
+  }
+}
 
 export interface StreetBoundary {
   id: string
@@ -130,6 +148,7 @@ export interface SegmentLookup {
   owner?: string
   zIndex?: number
   defaultWidth: WidthDefinition
+  defaultMaterial: Material
   defaultVariant?: string
   defaultElevation?: number
   enableElevation?: boolean
