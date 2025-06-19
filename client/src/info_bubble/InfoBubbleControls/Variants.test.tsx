@@ -18,9 +18,10 @@ import type { SegmentDefinition } from '@streetmix/types'
 vi.mock('../../segments/info')
 
 // Provide mock variant icons so that we can test icons with `enabledWithFlag`
-vi.mock('../../segments/variant_icons.json', () => ({
-  default: require('../../segments/__mocks__/variant_icons.json')
-}))
+vi.mock(
+  '../../segments/variant_icons.yaml',
+  async () => await import('../../segments/__mocks__/variant_icons.yaml')
+)
 
 describe('Variants', () => {
   const initialState = {
@@ -72,7 +73,7 @@ describe('Variants', () => {
         { initialState }
       )
 
-      await userEvent.click(screen.getByTitle('Outbound'))
+      await userEvent.click(screen.getByTestId('Outbound'))
       expect(store.getState().street.segments[0].variant.direction).toBe(
         'outbound'
       )
@@ -89,7 +90,7 @@ describe('Variants', () => {
         { initialState }
       )
 
-      await userEvent.click(screen.getByTitle('Waterfront'))
+      await userEvent.click(screen.getByTestId('Waterfront'))
       expect(store.getState().street.boundary.left.variant).toBe('waterfront')
     })
 
@@ -99,7 +100,7 @@ describe('Variants', () => {
         { initialState }
       )
 
-      await userEvent.click(screen.getByTitle('Waterfront'))
+      await userEvent.click(screen.getByTestId('Waterfront'))
       expect(store.getState().street.boundary.right.variant).toBe('waterfront')
     })
   })
@@ -124,7 +125,7 @@ describe('Variants', () => {
         }
       })
 
-      expect(screen.getByTitle('Flagged variant')).toBeInTheDocument()
+      expect(screen.getByTestId('Flagged variant')).toBeInTheDocument()
     })
 
     it('does not render a button if flag is false', () => {
@@ -139,7 +140,7 @@ describe('Variants', () => {
         }
       })
 
-      expect(screen.queryByTitle('Flagged variant')).not.toBeInTheDocument()
+      expect(screen.queryByTestId('Flagged variant')).not.toBeInTheDocument()
     })
   })
 })
