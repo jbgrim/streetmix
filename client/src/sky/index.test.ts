@@ -7,10 +7,9 @@ import {
   getAllSkyboxDefs
 } from '.'
 
-vi.mock(
-  './skybox-defs.json',
-  async () => await import('./__mocks__/skybox-defs.json')
-)
+vi.mock('./skybox-defs.json', () => ({
+  default: MOCK_SKY_DEFS
+}))
 vi.mock('./constants', () => ({ DEFAULT_SKYBOX: 'default' }))
 
 describe('skybox helpers', () => {

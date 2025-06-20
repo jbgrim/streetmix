@@ -82,6 +82,7 @@ function StreetEditable (props: StreetEditableProps): React.ReactElement {
     street,
     streetSectionEditable
   )
+
   const [collectedProps, drop] = useDrop(dropTargetSpec)
 
   useEffect(() => {

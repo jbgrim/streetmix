@@ -9,7 +9,7 @@ const secret = jwksRsa.expressJwtSecret({
   jwksUri: `https://${process.env.AUTH0_DOMAIN}/.well-known/jwks.json`
 })
 
-const jwtCheck = expressjwt({
+export const jwtCheck = expressjwt({
   algorithms: ['RS256'],
   secret,
   issuer: `https://${process.env.AUTH0_DOMAIN}/`,
@@ -23,7 +23,20 @@ const jwtCheck = expressjwt({
   }
 })
 
-export default function wrappedCheck (req, res, next) {
+// Check admin JWT token we are creating using jsonwebtoken issuer is not configured in auth0
+const adminJwtCheck = expressjwt({
+  algorithms: ['HS256'],
+  secret: process.env.JWT_SECRET,
+  credentialsRequired: false,
+  getToken: function fromCookies (req) {
+    if (req.cookies && req.cookies.admin_login_token) {
+      return req.cookies.admin_login_token
+    }
+    return null
+  }
+})
+
+export function wrappedCheck (req, res, next) {
   const handleErrorNext = (err) => {
     if (
       err?.name === 'UnauthorizedError' &&
@@ -39,4 +52,18 @@ export default function wrappedCheck (req, res, next) {
   }
 
   return jwtCheck(req, res, handleErrorNext)
+}
+
+export function wrappedAdminCheck (req, res, next) {
+  const handleErrorNext = (err) => {
+    if (err?.name === 'UnauthorizedError') {
+      logger.error(
+        `Unauthorized access to admin route - ${req.method} ${req.url}`
+      )
+      logger.error(err)
+    }
+    next(err)
+  }
+
+  return adminJwtCheck(req, res, handleErrorNext)
 }

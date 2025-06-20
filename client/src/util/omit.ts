@@ -17,6 +17,7 @@ export const omit = <T>(obj: T, props: string[]): Partial<T> => {
   // For each property in `props`, delete it from cloned object
   // @ts-expect-error - It's safe to delete non-existent properties
   // Properties that are not found are a no-op.
+
   props.forEach((prop) => delete obj[prop])
 
   // Return final object

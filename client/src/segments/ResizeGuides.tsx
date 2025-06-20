@@ -81,14 +81,8 @@ function calculateStyles (
   const variantInfo = getSegmentVariantInfo(segment.type, segment.variantString)
 
   // If the variant has a minimum width defined, we show minimum-width guides
-  const minWidth =
-    variantInfo.minWidth !== undefined
-      ? getWidthInMetric(variantInfo.minWidth, units)
-      : undefined
-  const maxWidth =
-    variantInfo.maxWidth !== undefined
-      ? getWidthInMetric(variantInfo.maxWidth, units)
-      : undefined
+  const minWidth = getWidthInMetric(variantInfo.minWidth, units)
+  const maxWidth = getWidthInMetric(variantInfo.maxWidth, units)
 
   // Maximum-width guides are based on several factors:
   // - If the variant does not have a maximum width defined, then the segment's

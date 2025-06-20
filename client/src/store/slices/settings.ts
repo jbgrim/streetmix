@@ -1,16 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
-
-import type { ColorModes } from '~/src/app/constants'
-import { COLOR_MODE_LIGHT } from '~/src/app/constants'
-import {
-  SETTINGS_UNITS_IMPERIAL,
-  SETTINGS_UNITS_METRIC
-} from '~/src/users/constants'
-import { STREETMIX_INSTANCE } from '../../app/config'
+import { COLOR_MODE_LIGHT } from '../../app/constants'
 import { changeLocale } from './locale'
-
+import type { ColorModes } from '../../app/constants'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import type { UnitsSetting } from '@streetmix/types'
 
 interface SettingsState {
   lastStreetId: string | null
@@ -23,7 +15,7 @@ interface SettingsState {
   saveAsImageWatermark: boolean
   colorMode: ColorModes
   locale: string | null
-  units: UnitsSetting
+  units: number | null
 }
 
 const initialState: SettingsState = {
@@ -37,11 +29,7 @@ const initialState: SettingsState = {
   saveAsImageWatermark: true,
   colorMode: COLOR_MODE_LIGHT,
   locale: null,
-  // Temporary workaround: coastmix instance defaults to US customary units
-  units:
-    STREETMIX_INSTANCE === 'coastmix'
-      ? SETTINGS_UNITS_IMPERIAL
-      : SETTINGS_UNITS_METRIC
+  units: null
 }
 
 const settingsSlice = createSlice({

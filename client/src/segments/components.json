@@ -89,18 +89,6 @@
           }
         }
       }
-    },
-    "beach": {
-      "elevation": 0,
-      "variants": {
-        "type": {
-          "default": {
-            "graphics": {
-              "repeat": ["ground--sand", "beach--surface"]
-            }
-          }
-        }
-      }
     }
   },
   "markings": {
@@ -907,17 +895,6 @@
               "repeat": "utilities--drainage-channel-piece-center",
               "left": "utilities--drainage-channel-piece-left-vertical",
               "right": "utilities--drainage-channel-piece-right-vertical"
-            }
-          }
-        }
-      }
-    },
-    "beach-lounger": {
-      "variants": {
-        "type": {
-          "default": {
-            "graphics": {
-              "center": "beach--lounger"
             }
           }
         }

@@ -192,7 +192,9 @@ function ProfileSettings (): React.ReactElement | null {
               </p>
               <div className="profile-settings-button">
                 <Button
-                  onClick={handleSaveDisplayName}
+                  onClick={() => {
+                    handleSaveDisplayName()
+                  }}
                   primary
                   disabled={isPending}
                 >

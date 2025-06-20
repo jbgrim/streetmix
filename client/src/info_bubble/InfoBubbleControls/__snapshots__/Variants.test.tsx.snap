@@ -7,8 +7,8 @@ exports[`Variants > segment variants > renders segment buttons 1`] = `
   >
     <button
       class="btn variant-selected"
-      data-testid="Inbound"
       disabled=""
+      title="Inbound"
       type="button"
     >
       <svg
@@ -17,13 +17,13 @@ exports[`Variants > segment variants > renders segment buttons 1`] = `
         xmlns:xlink="http://www.w3.org/1999/xlink"
       >
         <use
-          href="#icon-direction-inbound"
+          xlink:href="#icon-direction-inbound"
         />
       </svg>
     </button>
     <button
       class="btn"
-      data-testid="Outbound"
+      title="Outbound"
       type="button"
     >
       <svg
@@ -32,13 +32,13 @@ exports[`Variants > segment variants > renders segment buttons 1`] = `
         xmlns:xlink="http://www.w3.org/1999/xlink"
       >
         <use
-          href="#icon-direction-outbound"
+          xlink:href="#icon-direction-outbound"
         />
       </svg>
     </button>
     <button
       class="btn"
-      data-testid="No one"
+      title="No one"
       type="button"
     >
       <svg
@@ -47,7 +47,7 @@ exports[`Variants > segment variants > renders segment buttons 1`] = `
         xmlns:xlink="http://www.w3.org/1999/xlink"
       >
         <use
-          href="#icon-"
+          xlink:href="#icon-"
         />
       </svg>
     </button>

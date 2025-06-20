@@ -799,6 +799,78 @@
       }
     }
   },
+  "custom": {
+    "name": "Custom",
+    "nameKey": "custom",
+    "owner": "NONE",
+    "zIndex": 20,
+    "defaultWidth": {
+      "metric": 0.5,
+      "imperial": 2
+    },
+    "defaultVariant": "custom",
+    "variants": ["custom-type"],
+    "details": {
+      "custom": {
+        "name": "Custom",
+        "nameKey": "custom",
+        "components": {
+          "lanes": [
+            {
+              "id": "sidewalk",
+              "variants": {
+                "color": "regular"
+              }
+            }
+          ]
+        }
+      },
+      "planter": {
+        "name": "Planter",
+        "nameKey": "planter",
+        "components": {
+          "lanes": [
+            {
+              "id": "sidewalk",
+              "variants": {
+                "color": "regular"
+              }
+            }
+          ],
+          "objects": [
+            {
+              "id": "planter-box",
+              "variants": {
+                "type": "default"
+              }
+            }
+          ]
+        }
+      },
+      "bench": {
+        "name": "Bench",
+        "nameKey": "bench",
+        "components": {
+          "lanes": [
+            {
+              "id": "sidewalk",
+              "variants": {
+                "color": "regular"
+              }
+            }
+          ],
+          "objects": [
+            {
+              "id": "bench",
+              "variants": {
+                "type": "default"
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
   "drainage-channel": {
     "name": "Drainage channel",
     "nameKey": "drainage-channel",
@@ -4254,16 +4326,5 @@
         }
       }
     }
-  },
-  "block": {
-    "name": "Block Fonctionnel",
-    "nameKey": "block",
-    "owner": "UTILITY",
-    "zIndex": 15,
-    "defaultWidth": {
-      "metric": 3.5,
-      "imperial": 11.667
-    },
-    "defaultMaterial": "default"
   }
 }

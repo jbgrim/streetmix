@@ -34,11 +34,20 @@
 
       .checkbox-item {
         display: inline-block;
-        margin-inline-start: 20px;
+        margin-left: 20px;
       }
 
       .checkbox-item:first-of-type {
-        margin-inline-start: 0;
+        margin-left: 0;
+      }
+
+      [dir="rtl"] & .checkbox-item {
+        margin-left: 0;
+        margin-right: 20px;
+      }
+
+      [dir="rtl"] & .checkbox-item:first-of-type {
+        margin-right: 0;
       }
     }
   }

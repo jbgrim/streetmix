@@ -32,21 +32,25 @@ function SponsorBanner (): React.ReactElement | null {
   const { lede, text, link, linkText } = banner
 
   // If we're missing all the pieces, bail
+
   if (!lede && !text && !link) return null
 
   return (
     <div className="sponsor-banner">
       <span className="sponsor-title">Sponsor</span>
+      {}
       {lede && (
         <>
           <strong className="notification-bar-intro">{lede}</strong>{' '}
         </>
       )}
+      {}
       {text && (
         <>
           <span className="notification-bar-text">{text}</span>{' '}
         </>
       )}
+      {}
       {link && (
         <ExternalLink href={link} className="notification-bar-link">
           {linkText ?? (

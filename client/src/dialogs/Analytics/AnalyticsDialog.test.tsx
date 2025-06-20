@@ -2,14 +2,15 @@ import React from 'react'
 import { vi } from 'vitest'
 
 import { render } from '~/test/helpers/render'
+import segments0 from '../../segments/__mocks__/capacity_data.json'
 import AnalyticsDialog from './AnalyticsDialog'
 
 // Provide mock capacity data to prevent changes in production data from
 // breaking the expected values of this test
-vi.mock(
-  '../../segments/capacity_data.json',
-  async () => await import('../../segments/__mocks__/capacity_data.json')
-)
+
+vi.mock('../../segments/capacity_data.json', () => ({
+  default: segments0
+}))
 
 const initialState = {
   locale: {

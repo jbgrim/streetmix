@@ -1,8 +1,8 @@
-import { getVariantInfo, getVariantString } from './variant_utils'
+import { getVariantArray, getVariantString } from '../variant_utils'
 
-describe('getVariantInfo', () => {
+describe('getVariantArray', () => {
   it('returns an object', () => {
-    const result = getVariantInfo('streetcar', 'inbound|regular')
+    const result = getVariantArray('streetcar', 'inbound|regular')
     expect(result).toEqual({
       direction: 'inbound',
       'public-transit-asphalt': 'regular'
@@ -10,7 +10,7 @@ describe('getVariantInfo', () => {
   })
 
   it('returns an empty object if the segment is not found', () => {
-    const result = getVariantInfo('foo', '')
+    const result = getVariantArray('foo', '')
     expect(result).toEqual({})
   })
 })

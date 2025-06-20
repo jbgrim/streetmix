@@ -9,7 +9,7 @@ export default defineConfig({
   test: {
     name: 'client',
     globals: true,
-    environment: 'happy-dom',
+    environment: 'jsdom',
     setupFiles: 'vitest.setup.ts',
     alias: [
       {

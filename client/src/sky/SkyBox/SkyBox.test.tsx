@@ -2,12 +2,12 @@ import React from 'react'
 import { vi } from 'vitest'
 
 import { render } from '~/test/helpers/render'
+import __mocks__ from '../__mocks__/skybox-defs.json'
 import SkyBox from './SkyBox'
 
-vi.mock(
-  '../skybox-defs.json',
-  async () => await import('../__mocks__/skybox-defs.json')
-)
+vi.mock('../skybox-defs.json', () => ({
+  default: __mocks__
+}))
 
 // Mock the `images` object.
 // Note: in real life, this is a Map where the .get()

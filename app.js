@@ -18,7 +18,7 @@ import appURL from './app/lib/url.js'
 import apiRoutes from './app/api_routes.js'
 import serviceRoutes from './app/service_routes.js'
 import logger from './app/lib/logger.js'
-import jwtCheck from './app/authentication.js'
+import { jwtCheck } from './app/authentication.js'
 
 initCloudinary()
 

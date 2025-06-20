@@ -108,6 +108,7 @@ function Credits (): React.ReactElement {
                 />
               </h3>
               <ul>
+                {}
                 {value.sort().map((name) =>
                   Array.isArray(name)
                     ? (
@@ -157,6 +158,7 @@ function Credits (): React.ReactElement {
                   />
                 </h4>
                 <ul>
+                  {}
                   {value.sort().map((name) =>
                     Array.isArray(name)
                       ? (

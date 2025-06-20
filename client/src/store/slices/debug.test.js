@@ -8,6 +8,10 @@ describe('debug reducer', () => {
     forceReadOnly: false
   }
 
+  it('should handle initial state', () => {
+    expect(debug(undefined, {})).toEqual(initialState)
+  })
+
   describe('should handle setDebugFlags()', () => {
     it('should handle one flag', () => {
       const action = debug(

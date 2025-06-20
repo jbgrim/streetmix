@@ -51,8 +51,6 @@ export interface UserState {
   }
 }
 
-export type ContentDirection = 'ltr' | 'rtl'
-
 export interface SentimentVote {
   score: number
   data: StreetState
@@ -72,7 +70,7 @@ type ToastComponent =
   | 'TOAST_NO_CONNECTION'
 
 interface BaseToastItem {
-  method?: 'success' | 'warning'
+  mode?: 'success' | 'warning'
   title?: string
   action?: string
   duration?: number

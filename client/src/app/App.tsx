@@ -50,6 +50,8 @@ function App (): React.ReactElement {
 
   // Set color mode on top level DOM element
   useEffect(() => {
+    // Element is guaranteed to exist
+
     document.querySelector('html')!.dataset.colorMode = colorMode
   }, [colorMode])
 

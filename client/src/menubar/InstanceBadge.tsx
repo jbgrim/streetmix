@@ -54,11 +54,6 @@ function getDetails (
             label: 'Sandbox',
             className: 'instance-label-sandbox'
           }
-        case 'coastmix':
-          return {
-            label: 'Coastmix',
-            className: 'instance-label-demo'
-          }
         default:
           return {}
       }

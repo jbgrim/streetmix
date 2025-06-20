@@ -4,7 +4,11 @@ import { vi } from 'vitest'
 import { render } from '~/test/helpers/render'
 import AboutDialog from './AboutDialog'
 
-vi.mock('./credits.json', async () => await import('./__mocks__/credits.json'))
+import __mocks__ from './__mocks__/credits.json'
+
+vi.mock('./credits.json', () => ({
+  default: __mocks__
+}))
 
 describe('AboutDialog', () => {
   it('renders snapshot', () => {

@@ -4,6 +4,7 @@ import { screen, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 
 import { render } from '~/test/helpers/render'
+import segments from '../segments/__mocks__/segment-lookup.json'
 import PaletteContainer from './PaletteContainer'
 
 vi.mock('../segments/view', async (importOriginal) => {
@@ -13,10 +14,9 @@ vi.mock('../segments/view', async (importOriginal) => {
     drawSegmentContents: vi.fn()
   }
 })
-vi.mock(
-  '../segments/segment-lookup.json',
-  async () => await import('../segments/__mocks__/segment-lookup.json')
-)
+vi.mock('../segments/segment-lookup.json', () => ({
+  default: segments
+}))
 
 describe('PaletteContainer', () => {
   it('renders', () => {

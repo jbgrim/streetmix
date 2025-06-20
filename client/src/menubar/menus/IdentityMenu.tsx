@@ -87,6 +87,15 @@ function IdentityMenu (props: MenuProps): React.ReactElement {
         <Icon name="settings" className="menu-item-icon" />
         <FormattedMessage id="menu.item.settings" defaultMessage="Settings" />
       </MenuItem>
+      {isAdmin && (
+        <MenuItem onClick={() => dispatch(showDialog('ADMIN_CONFIGURATION'))}>
+          <Icon name="settings" className="menu-item-icon" />
+          <FormattedMessage
+            id="menu.item.admin-configuration"
+            defaultMessage="Admin Configuration"
+          />
+        </MenuItem>
+      )}
       <MenuSeparator />
       <MenuItem className="menu-item menu-sign-out" onClick={onSignOutClick}>
         <Icon name="sign-out" className="menu-item-icon" />

@@ -5,12 +5,12 @@ import { userEvent } from '@testing-library/user-event'
 
 import { render } from '~/test/helpers/render'
 import * as uiSlice from '~/src/store/slices/ui'
+import __mocks__ from '../__mocks__/skybox-defs.json'
 import SkyPicker from './SkyPicker'
 
-vi.mock(
-  '../skybox-defs.json',
-  async () => await import('../__mocks__/skybox-defs.json')
-)
+vi.mock('../skybox-defs.json', () => ({
+  default: __mocks__
+}))
 vi.mock('../constants', () => ({ DEFAULT_SKYBOX: 'default' }))
 
 describe('SkyPicker', () => {

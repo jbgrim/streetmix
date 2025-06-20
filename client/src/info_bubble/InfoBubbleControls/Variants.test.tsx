@@ -10,18 +10,19 @@ import {
   INFO_BUBBLE_TYPE_LEFT_BUILDING,
   INFO_BUBBLE_TYPE_RIGHT_BUILDING
 } from '../constants'
+import segments0 from '../../segments/__mocks__/variant_icons.json'
 import Variants from './Variants'
 
 import type { SegmentDefinition } from '@streetmix/types'
 
 // Enable mocking of the return value of `getSegmentInfo`
+
 vi.mock('../../segments/info')
 
 // Provide mock variant icons so that we can test icons with `enabledWithFlag`
-vi.mock(
-  '../../segments/variant_icons.yaml',
-  async () => await import('../../segments/__mocks__/variant_icons.yaml')
-)
+vi.mock('../../segments/variant_icons.json', () => ({
+  default: segments0
+}))
 
 describe('Variants', () => {
   const initialState = {
@@ -73,7 +74,7 @@ describe('Variants', () => {
         { initialState }
       )
 
-      await userEvent.click(screen.getByTestId('Outbound'))
+      await userEvent.click(screen.getByTitle('Outbound'))
       expect(store.getState().street.segments[0].variant.direction).toBe(
         'outbound'
       )
@@ -90,7 +91,7 @@ describe('Variants', () => {
         { initialState }
       )
 
-      await userEvent.click(screen.getByTestId('Waterfront'))
+      await userEvent.click(screen.getByTitle('Waterfront'))
       expect(store.getState().street.boundary.left.variant).toBe('waterfront')
     })
 
@@ -100,7 +101,7 @@ describe('Variants', () => {
         { initialState }
       )
 
-      await userEvent.click(screen.getByTestId('Waterfront'))
+      await userEvent.click(screen.getByTitle('Waterfront'))
       expect(store.getState().street.boundary.right.variant).toBe('waterfront')
     })
   })
@@ -125,7 +126,7 @@ describe('Variants', () => {
         }
       })
 
-      expect(screen.getByTestId('Flagged variant')).toBeInTheDocument()
+      expect(screen.getByTitle('Flagged variant')).toBeInTheDocument()
     })
 
     it('does not render a button if flag is false', () => {
@@ -140,7 +141,7 @@ describe('Variants', () => {
         }
       })
 
-      expect(screen.queryByTestId('Flagged variant')).not.toBeInTheDocument()
+      expect(screen.queryByTitle('Flagged variant')).not.toBeInTheDocument()
     })
   })
 })

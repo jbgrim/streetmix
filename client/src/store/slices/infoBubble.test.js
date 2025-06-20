@@ -16,6 +16,10 @@ describe('infoBubble reducer', () => {
     hoverPolygon: []
   }
 
+  it('should handle initial state', () => {
+    expect(infoBubble(undefined, {})).toEqual(initialState)
+  })
+
   it('should handle show()', () => {
     expect(
       infoBubble(

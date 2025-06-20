@@ -5,7 +5,7 @@ import * as Sentry from '@sentry/browser'
 import USER_ROLES from '../../../app/data/user_roles.json'
 import { app } from '../preinit/app_settings'
 import { showError, ERRORS } from '../app/errors'
-import { MODES, processMode, getMode, setMode, getModeData } from '../app/mode'
+import { MODES, processMode, getMode, setMode } from '../app/mode'
 import { generateFlagOverrides, applyFlagOverrides } from '../app/flag_utils'
 import { formatMessage } from '../locales/locale'
 import { setPromoteStreet } from '../streets/remix'
@@ -22,6 +22,7 @@ import { loadSettings } from './settings'
 const USER_ID_COOKIE = 'user_id'
 const SIGN_IN_TOKEN_COOKIE = 'login_token'
 const REFRESH_TOKEN_COOKIE = 'refresh_token'
+const ADMIN_TOKEN_COOKIE = 'admin_login_token'
 const LOCAL_STORAGE_SIGN_IN_ID = 'sign-in'
 
 export function doSignIn () {
@@ -29,11 +30,15 @@ export function doSignIn () {
 }
 
 export function getSignInData () {
-  return store.getState().user.signInData ?? {}
+  return store.getState().user.signInData || {}
 }
 
 export function isSignedIn () {
   return store.getState().user.signedIn
+}
+
+export function doAdminSignIn () {
+  store.dispatch(showDialog('ADMIN_SIGN_IN'))
 }
 
 /**
@@ -80,6 +85,7 @@ export async function loadSignIn () {
   const signInCookie = Cookies.get(SIGN_IN_TOKEN_COOKIE)
   const refreshCookie = Cookies.get(REFRESH_TOKEN_COOKIE)
   const userIdCookie = Cookies.get(USER_ID_COOKIE)
+  const adminCookie = Cookies.get(ADMIN_TOKEN_COOKIE)
 
   if (signInCookie && userIdCookie && refreshCookie) {
     store.dispatch(
@@ -91,6 +97,14 @@ export async function loadSignIn () {
     )
 
     saveSignInDataLocally()
+  } else if (adminCookie) {
+    store.dispatch(
+      setSignInData({
+        token: adminCookie,
+        refreshToken: refreshCookie,
+        userId: userIdCookie
+      })
+    )
   } else if (window.localStorage[LOCAL_STORAGE_SIGN_IN_ID]) {
     // old login data is in localstorage but we don't have the cookies we need
     clearAllClientSignInData()
@@ -123,7 +137,6 @@ export async function loadSignIn () {
   const sessionOverrides = generateFlagOverrides(storage, 'session')
 
   let flagOverrides = []
-
   if (signInData && signInData.token && signInData.userId) {
     const decoded = jwtDecode(signInData.token)
 
@@ -373,19 +386,19 @@ function _signInLoaded () {
     case MODES.GLOBAL_GALLERY:
       fetchStreetFromServer()
       break
+    case MODES.NEW_STREET:
     case MODES.NEW_STREET_COPY_LAST:
       if (app.readOnly) {
         showError(ERRORS.CANNOT_CREATE_NEW_STREET_ON_PHONE, true)
       } else {
-        createNewStreetOnServer()
+        createNewStreetOnServer(false)
       }
       break
-    case MODES.NEW_STREET:
+    case MODES.NEW_STREET_EMPTY:
       if (app.readOnly) {
         showError(ERRORS.CANNOT_CREATE_NEW_STREET_ON_PHONE, true)
       } else {
-        const modeData = getModeData()
-        createNewStreetOnServer(modeData.type)
+        createNewStreetOnServer(true)
       }
       break
   }

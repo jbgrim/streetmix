@@ -1,8 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
 import FEATURE_FLAGS from '@streetmix/feature-flags'
-
-import { STREETMIX_INSTANCE } from '../../app/config'
-
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { FeatureFlagDefinition, FeatureFlags } from '../../types'
 
@@ -22,11 +19,6 @@ function generateInitialFlags (flags: FeatureFlags): FeatureFlagState {
       // Add new ones
       value: value.defaultValue,
       source: 'initial'
-    }
-
-    // Special-case flag turned on for a specific Streetmix instance
-    if (key === 'COASTMIX_MODE' && STREETMIX_INSTANCE === 'coastmix') {
-      obj[key].value = true
     }
 
     return obj

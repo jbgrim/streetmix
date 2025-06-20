@@ -1,11 +1,12 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useCallback, useState } from 'react'
 import { useIntl } from 'react-intl'
 
 import logo from 'url:../../images/logo_horizontal.svg'
 import { useSelector } from '../store/hooks'
 import AccessibleIcon from '../ui/AccessibleIcon'
 import Icon from '../ui/Icon'
-import { doSignIn } from '../users/authentication'
+import { doAdminSignIn, doSignIn } from '../users/authentication'
+import USER_ROLES from '../../../app/data/user_roles.json'
 import InstanceBadge from './InstanceBadge'
 import MenuBarItem from './MenuBarItem'
 import SignInButton from './SignInButton'
@@ -14,6 +15,9 @@ import AvatarMenu from './AvatarMenu'
 
 import type { UserProfile } from '../types'
 import './MenuBar.css'
+import { fetchCurrentAdminUser } from '~src/app/routing'
+import { setSignInData } from '~src/store/slices/user'
+import AdminSignInButton from './AdminSignIn'
 
 interface MenuBarProps {
   onMenuDropdownClick: (menu: string, node: HTMLElement) => void
@@ -24,6 +28,10 @@ function MenuBar ({ onMenuDropdownClick }: MenuBarProps): React.ReactElement {
   const isSubscriber = useSelector(
     (state) => state.user.signedIn && state.user.isSubscriber
   )
+
+  const isAdminUser: boolean =
+    user?.roles?.includes(USER_ROLES.ADMIN.value) ?? false
+
   const offline = useSelector((state) => state.system.offline)
   const enableLocaleSettings = useSelector(
     (state) =>
@@ -88,7 +96,7 @@ function MenuBar ({ onMenuDropdownClick }: MenuBarProps): React.ReactElement {
     )
   }
 
-  function renderUserAvatar (user?: UserProfile): React.ReactElement {
+  const renderUserAvatar = useCallback((): React.ReactElement => {
     return user
       ? (
         <li>
@@ -104,6 +112,14 @@ function MenuBar ({ onMenuDropdownClick }: MenuBarProps): React.ReactElement {
           <SignInButton onClick={doSignIn} />
         </li>
         )
+  }, [isSubscriber, doSignIn, handleClick, user])
+
+  function renderAdminSignInButton (): React.ReactElement {
+    return (
+      <li>
+        <AdminSignInButton onClick={doAdminSignIn} />
+      </li>
+    )
   }
 
   return (
@@ -132,6 +148,7 @@ function MenuBar ({ onMenuDropdownClick }: MenuBarProps): React.ReactElement {
         )}
       </ul>
       <ul className="menu-bar-right" ref={menuBarRightEl}>
+        {!isAdminUser && renderAdminSignInButton()}
         <MenuBarItem
           label="New street"
           translation="menu.item.new-street"
@@ -155,7 +172,7 @@ function MenuBar ({ onMenuDropdownClick }: MenuBarProps): React.ReactElement {
             </AccessibleIcon>
           </MenuBarItem>
         )}
-        {!offline && renderUserAvatar(user)}
+        {!offline && renderUserAvatar()}
       </ul>
       <InstanceBadge />
     </nav>
