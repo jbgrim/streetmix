@@ -107,6 +107,38 @@ lamp-type:
   pride:
     id: rainbow
     title: Modern with pride banner
+bordure-orientation:
+  left:
+    id: direction-left
+    title: Left
+  right:
+    id: direction-right
+    title: Right
+bordure-type:
+  t2granit:
+    id: t2-granit
+    title: T2 granit
+  t2beton:
+    id: t2-beton
+    title: T2 béton
+  a2beton:
+    id: a2-beton
+    title: A2 béton
+  p1beton:
+    id: p1-beton
+    title: P1 béton
+  cs1beton:
+    id: cs1-beton
+    title: CS1 béton
+  cs1granit:
+    id: cs1-granit
+    title: CS1 granit
+  cs1pavebeton:
+    id: cs1-pave-beton
+    title: CS1 pavé béton
+  cc1beton:
+    id: cc1-beton
+    title: CC1 béton
 bench-orientation:
   left:
     id: direction-left

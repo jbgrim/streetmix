@@ -44,6 +44,7 @@ function Segment (props: SliceProps): React.ReactNode {
   const { sliceIndex, segment, units, segmentLeft } = props
   const [switchSegments, setSwitchSegments] = useState(false)
   const [oldVariant, setOldVariant] = useState<string>(segment.variantString)
+  const elements = useSelector((state) => state.costs.elements)
 
   const enableAnalytics = useSelector(
     (state) => state.flags.ANALYTICS.value && state.street.showAnalytics
@@ -258,6 +259,8 @@ function Segment (props: SliceProps): React.ReactNode {
     // and can be used as a consistent and reliable seed for a PRNG
     const randSeed = segment.id
 
+    const element = elements.find((elem) => elem.id === segment.material)
+
     return (
       <div ref={nodeRef} style={{ width: '100%', height: '100%' }}>
         <SegmentCanvas
@@ -266,6 +269,7 @@ function Segment (props: SliceProps): React.ReactNode {
           variantString={isOldVariant ? oldVariant : segment.variantString}
           randSeed={randSeed}
           elevation={segment.elevation}
+          color={element?.color}
         />
       </div>
     )

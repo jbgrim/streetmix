@@ -525,6 +525,112 @@
         }
       }
     },
+    "bordure": {
+      "name": "Bordure",
+      "nameKey": "bordure",
+      "owner": "PEDESTRIAN",
+      "zIndex": 21,
+      "variants": {
+        "type|orientation": {
+          "t2granit": {
+            "right": {
+              "graphics": {
+                "right": "bordures--bordure-t2-granit-right"
+              }
+            },
+            "left": {
+              "graphics": {
+                "left": "bordures--bordure-t2-granit-left"
+              }
+            }
+          },
+          "t2beton": {
+            "right": {
+              "graphics": {
+                "right": "bordures--bordure-t2-beton-right"
+              }
+            },
+            "left": {
+              "graphics": {
+                "left": "bordures--bordure-t2-beton-left"
+              }
+            }
+          },
+          "a2beton": {
+            "right": {
+              "graphics": {
+                "right": "bordures--bordure-a2-beton-right"
+              }
+            },
+            "left": {
+              "graphics": {
+                "left": "bordures--bordure-a2-beton-left"
+              }
+            }
+          },
+          "p1beton": {
+            "right": {
+              "graphics": {
+                "right": "bordures--bordure-p1-beton-right"
+              }
+            },
+            "left": {
+              "graphics": {
+                "left": "bordures--bordure-p1-beton-left"
+              }
+            }
+          },
+          "cs1beton": {
+            "right": {
+              "graphics": {
+                "right": "bordures--bordure-cs1-beton-right"
+              }
+            },
+            "left": {
+              "graphics": {
+                "left": "bordures--bordure-cs1-beton-left"
+              }
+            }
+          },
+          "cs1granit": {
+            "right": {
+              "graphics": {
+                "right": "bordures--bordure-cs1-granit-right"
+              }
+            },
+            "left": {
+              "graphics": {
+                "left": "bordures--bordure-cs1-granit-left"
+              }
+            }
+          },
+          "cs1pavebeton": {
+            "right": {
+              "graphics": {
+                "right": "bordures--bordure-cs1-pave-beton-right"
+              }
+            },
+            "left": {
+              "graphics": {
+                "left": "bordures--bordure-cs1-pave-beton-left"
+              }
+            }
+          },
+          "cc1beton": {
+            "right": {
+              "graphics": {
+                "right": "bordures--bordure-cc1-beton"
+              }
+            },
+            "left": {
+              "graphics": {
+                "left": "bordures--bordure-cc1-beton"
+              }
+            }
+          }
+        }
+      }
+    },
     "pride-banner": {
       "name": "Pride banner",
       "nameKey": "pride-banner",

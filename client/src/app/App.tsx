@@ -26,6 +26,7 @@ import NotificationBar from './NotificationBar'
 import Loading from './Loading'
 import SponsorBanner from './SponsorBanner'
 import StreetCost from '~src/streets/StreetCost/StreetCost'
+import fetchCosts from '~src/streets/StreetCost/fetchCosts'
 
 function App (): React.ReactElement {
   const [isLoading, setLoading] = useState(true)
@@ -54,6 +55,11 @@ function App (): React.ReactElement {
 
     document.querySelector('html')!.dataset.colorMode = colorMode
   }, [colorMode])
+
+  // Récupère les informations sur les coûts au chargement de l'application
+  useEffect(() => {
+    fetchCosts()
+  }, [])
 
   return (
     <>

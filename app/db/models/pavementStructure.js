@@ -12,6 +12,10 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false
       },
+      colour: {
+        type: DataTypes.STRING,
+        allowNull: true
+      },
       prixProjet: {
         type: DataTypes.STRING,
         field: 'prix_projet'

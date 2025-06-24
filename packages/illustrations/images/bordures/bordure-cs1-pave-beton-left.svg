@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="50mm"
+   height="36.25mm"
+   viewBox="0 0 50 36.25"
+   version="1.1"
+   id="svg1"
+   inkscape:export-filename="image.svg"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   sodipodi:docname="bordure-cs1-pave-beton-left.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showguides="true"
+     inkscape:lockguides="false"
+     inkscape:zoom="4.6743056"
+     inkscape:cx="94.452533"
+     inkscape:cy="85.03937"
+     inkscape:window-width="1876"
+     inkscape:window-height="1006"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#c1bebb;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.443068;stroke-dasharray:none;stroke-opacity:1"
+       id="rect7"
+       width="46.25"
+       height="24.999998"
+       x="3.7499983"
+       y="11.25"
+       inkscape:export-filename="..\..\Bordure T2 Béton G.svg"
+       inkscape:export-xdpi="2.54"
+       inkscape:export-ydpi="2.54" />
+    <rect
+       style="fill:#c1bebb;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.129277;stroke-dasharray:none;stroke-opacity:1"
+       id="rect7-8"
+       width="3.75"
+       height="26.25"
+       x="-1.5000001e-06"
+       y="10"
+       inkscape:export-filename="..\..\Bordure T2 Béton G.svg"
+       inkscape:export-xdpi="2.54"
+       inkscape:export-ydpi="2.54" />
+    <path
+       style="fill:#c1bebb;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.120248;stroke-dasharray:none;stroke-opacity:1"
+       d="m 4.3117609,12.125 c -0.061373,0.02953 -0.13048,-0.0155 -0.1607775,0.04058"
+       id="path9" />
+    <path
+       style="fill:#c1bebb;fill-opacity:1;stroke-width:0.0661457"
+       d="M -2e-6,10.000001 C 0.50022849,9.5406048 3.749999,6.2500005 3.749999,6.2500005 v 3.7500005 z"
+       id="path1" />
+    <path
+       style="fill:#c1bebb;fill-opacity:1;stroke-width:0.0661457"
+       d="m 3.749999,6.25 46.249998,5 H 3.7499984 Z"
+       id="path2" />
+    <path
+       style="fill:#e4e2dc;fill-opacity:1;stroke-width:0.0661457"
+       d="M 26.874998,36.249999 29.813625,9.06769 28.469136,8.9223392 25.383183,36.249999 Z"
+       id="path3" />
+    <path
+       style="fill:#e4e2dc;fill-opacity:1;stroke-width:0.0661457"
+       d="m 49.999997,32.636024 v 0.787698 L 3.7499984,28.512993 v -0.876968 z"
+       id="path4" />
+    <path
+       style="fill:#e4e2dc;fill-opacity:1;stroke-width:0.0661457"
+       d="M 3.7499984,27.636025 -1.5e-6,27.168389 v 9.08161 H 25.383183 L 25.990215,30.874412 3.7499984,28.512993 Z"
+       id="path5" />
+    <path
+       style="fill:#e4e2dc;fill-opacity:1;stroke-width:0.0661457"
+       d="m 27.439506,31.028296 -0.564508,5.221703 H 49.999997 V 33.23516 Z"
+       id="path6" />
+  </g>
+</svg>

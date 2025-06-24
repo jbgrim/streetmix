@@ -12,7 +12,6 @@ import react from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
 import cypress from 'eslint-plugin-cypress/flat'
 import importPlugin from 'eslint-plugin-import'
-import love from 'eslint-config-love'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -105,7 +104,6 @@ export default defineConfig([
     }
   },
   {
-    ...love,
     // Only run TypeScript linting on TypeScript files, otherwise it'd
     // report TypeScript errors on regular JavaScript files (bad!)
     files: ['client/**/*.{ts,tsx}', 'packages/types/**/*.ts'],
@@ -140,7 +138,6 @@ export default defineConfig([
     }
   },
   {
-    ...love,
     files: ['packages/export-image/**/*.ts'],
     extends: fixupConfigRules(
       compat.extends(
@@ -173,7 +170,6 @@ export default defineConfig([
     }
   },
   {
-    ...love,
     files: ['packages/i18n/src/*.ts'],
     extends: fixupConfigRules(
       compat.extends(

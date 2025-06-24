@@ -479,7 +479,8 @@ function handleSegmentCanvasDrop (draggedItem, type) {
     width: draggedItem.actualWidth,
     elevation: draggedItem.elevation,
     label: draggedItem.label,
-    material: draggedItem.material
+    material: draggedItem.material,
+    category: draggedItem.category
   }
 
   newSegment.variant =
@@ -542,7 +543,8 @@ export function createSliceDragSpec (props) {
         label: props.segment.label,
         actualWidth: props.segment.width,
         elevation: props.segment.elevation,
-        material: props.segment.material
+        material: props.segment.material,
+        category: props.segment.category
       }
     },
     end (item, monitor) {
@@ -606,6 +608,7 @@ export function createPaletteItemDragSpec (segment) {
       }
 
       const material = segment.defaultMaterial
+      const category = segment.category
 
       return {
         id: generateRandSeed(),
@@ -613,7 +616,8 @@ export function createPaletteItemDragSpec (segment) {
         variantString,
         actualWidth: getWidthInMetric(segment.defaultWidth, units),
         elevation,
-        material
+        material,
+        category
       }
     },
     end: (item, monitor) => {

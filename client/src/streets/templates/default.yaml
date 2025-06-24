@@ -41,30 +41,25 @@ slices:
       bus-asphalt: shared
       bus-type: typical
     width: 3.6
-    material: heavyTrafic
   - type: drive-lane
     variant:
       direction: inbound
       car-type: car
     width: 2.7
-    material: lowTrafic
   - type: divider
     variant:
       divider-type: bush
     width: 0.9
-    material: lowTrafic
-  - type: turn-lane
+  - type: drive-lane
     variant:
       direction: outbound
-      turn-lane-orientation: left-straight
+      car-type: car
     width: 3
-    material: lowTrafic
   - type: parking-lane
     variant:
       parking-lane-direction: outbound
       parking-lane-orientation: right
     width: 2.1
-    material: lowTrafic
   - type: divider
     variant:
       divider-type: planter-box

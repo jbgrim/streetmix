@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="20mm"
+   height="60mm"
+   viewBox="0 0 20 60"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="bordure-p1-beton-right.svg"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.56569164"
+     inkscape:cx="163.51665"
+     inkscape:cy="481.7112"
+     inkscape:window-width="1876"
+     inkscape:window-height="1006"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <defs
+     id="defs1" />
+  <rect
+     style="fill:#c1bebb;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.325752;stroke-dasharray:none;stroke-opacity:1"
+     id="rect7"
+     width="12.5"
+     height="50"
+     x="-20"
+     y="10"
+     transform="scale(-1,1)" />
+  <rect
+     style="fill:#c1bebb;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.5442;stroke-dasharray:none;stroke-opacity:1"
+     id="rect8"
+     width="7.4999995"
+     height="42.5"
+     x="-7.4999995"
+     y="17.500002"
+     transform="scale(-1,1)" />
+  <path
+     style="fill:#c1bebb;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.480993;stroke-dasharray:none;stroke-opacity:1"
+     d="m 62.75295,0 c 0.24549,0.118111 0.52192,-0.062 0.64311,0.162313"
+     id="path9" />
+  <path
+     style="fill:#c1bebb;fill-opacity:1;stroke-width:0.132291"
+     id="path1"
+     sodipodi:type="arc"
+     sodipodi:cx="-7.4999995"
+     sodipodi:cy="17.500002"
+     sodipodi:rx="7.4999995"
+     sodipodi:ry="7.4999995"
+     sodipodi:start="4.712389"
+     sodipodi:end="0"
+     sodipodi:arc-type="slice"
+     d="M -7.4999995,10.000002 A 7.4999995,7.4999995 0 0 1 0,17.500002 h -7.4999995 z"
+     transform="scale(-1,1)" />
+</svg>

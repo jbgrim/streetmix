@@ -126,5 +126,50 @@ lamps--pride-banner-left:
 effects--sweat-drop:
   id: effects--sweat-drop
   originY: -160
+bordures--bordure-t2-granit-left:
+  id: bordures--bordure-t2-granit-left
+  originY: 58
+bordures--bordure-t2-granit-right:
+  id: bordures--bordure-t2-granit-right
+  originY: 58
+bordures--bordure-t2-beton-left:
+  id: bordures--bordure-t2-beton-left
+  originY: 58
+bordures--bordure-t2-beton-right:
+  id: bordures--bordure-t2-beton-right
+  originY: 58
+bordures--bordure-a2-beton-left:
+  id: bordures--bordure-a2-beton-left
+  originY: 50
+bordures--bordure-a2-beton-right:
+  id: bordures--bordure-a2-beton-right
+  originY: 50
+bordures--bordure-p1-beton-left:
+  id: bordures--bordure-p1-beton-left
+  originY: 50
+bordures--bordure-p1-beton-right:
+  id: bordures--bordure-p1-beton-right
+  originY: 50
+bordures--bordure-cs1-beton-left:
+  id: bordures--bordure-cs1-beton-left
+  originY: 25
+bordures--bordure-cs1-beton-right:
+  id: bordures--bordure-cs1-beton-right
+  originY: 25
+bordures--bordure-cs1-granit-left:
+  id: bordures--bordure-cs1-granit-left
+  originY: 25
+bordures--bordure-cs1-granit-right:
+  id: bordures--bordure-cs1-granit-right
+  originY: 25
+bordures--bordure-cs1-pave-beton-left:
+  id: bordures--bordure-cs1-pave-beton-left
+  originY: 25
+bordures--bordure-cs1-pave-beton-right:
+  id: bordures--bordure-cs1-pave-beton-right
+  originY: 25
+bordures--bordure-cc1-beton:
+  id: bordures--bordure-cc1-beton
+  originY: 25
 missing:
   id: missing

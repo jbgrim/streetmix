@@ -1,1 +1,55 @@
-<svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 40 60" xmlns="http://www.w3.org/2000/svg"><path d="m0-39.5h11.047l.803 39.391-11.85.109z" fill="#d8d3cb" fill-rule="nonzero" transform="matrix(1.27 0 0 1.27 0 60)"/><path d="m8.033 54.983-.743-45.148h7.148l.611 45.148z" fill="#c1bebb" transform="matrix(1 0 0 1.04156 0 -.40871)"/></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   clip-rule="evenodd"
+   fill-rule="evenodd"
+   stroke-linejoin="round"
+   stroke-miterlimit="2"
+   viewBox="0 0 40 60"
+   version="1.1"
+   id="svg2"
+   sodipodi:docname="drainage-channel-piece-left-vertical.svg"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="namedview2"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="6.7"
+     inkscape:cx="19.925373"
+     inkscape:cy="30.074627"
+     inkscape:window-width="1920"
+     inkscape:window-height="1080"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <rect
+     style="fill:#4f83a3;fill-opacity:1;stroke-width:0.990739"
+     id="rect2"
+     width="5"
+     height="30"
+     x="10"
+     y="25" />
+  <path
+     d="m0-39.5h11.047l.803 39.391-11.85.109z"
+     fill="#d8d3cb"
+     fill-rule="nonzero"
+     transform="matrix(1.27 0 0 1.27 0 60)"
+     id="path1" />
+  <path
+     d="m8.033 54.983-.743-45.148h7.148l.611 45.148z"
+     fill="#c1bebb"
+     transform="matrix(1 0 0 1.04156 0 -.40871)"
+     id="path2"
+     style="fill:#89ba6a;fill-opacity:1" />
+</svg>

@@ -15,6 +15,7 @@ import toasts from '../slices/toasts'
 import ui from '../slices/ui'
 import history from '../slices/history'
 import user from '../slices/user'
+import costs from '../slices/costs'
 
 const reducers = {
   app,
@@ -33,7 +34,8 @@ const reducers = {
   system,
   toasts,
   ui,
-  user
+  user,
+  costs
 }
 
 export default reducers

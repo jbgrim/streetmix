@@ -152,6 +152,8 @@ export function getSegmentVariantInfo (
   )
   variantInfo.elevation = lane.elevation
 
+  variantInfo.category = getSegmentInfo(type).category
+
   return variantInfo
 }
 

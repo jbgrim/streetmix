@@ -18,6 +18,7 @@ interface SegmentCanvasProps {
   randSeed: string
   groundBaseline?: number
   elevation?: number
+  color?: string
 }
 
 function SegmentCanvas ({
@@ -26,7 +27,8 @@ function SegmentCanvas ({
   variantString,
   randSeed,
   groundBaseline = GROUND_BASELINE,
-  elevation
+  elevation,
+  color
 }: SegmentCanvasProps): React.ReactElement {
   const [firstRender, setFirstRender] = useState(true)
   const canvasEl = useRef<HTMLCanvasElement>(null)
@@ -55,7 +57,7 @@ function SegmentCanvas ({
 
     // Only redraw on certain specific prop changes
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [variantString, actualWidth, elevation, redrawCanvas])
+  }, [variantString, actualWidth, elevation, redrawCanvas, color])
 
   function drawSegment (canvas: HTMLCanvasElement): void {
     const ctx = canvas.getContext('2d')
@@ -72,7 +74,8 @@ function SegmentCanvas ({
       elevation,
       randSeed,
       1,
-      dpi
+      dpi,
+      color
     )
   }
 

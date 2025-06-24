@@ -148,6 +148,50 @@
       "title": "Modern with pride banner"
     }
   },
+  "bordure-orientation": {
+    "left": {
+      "id": "direction-left",
+      "title": "Left"
+    },
+    "right": {
+      "id": "direction-right",
+      "title": "Right"
+    }
+  },
+  "bordure-type": {
+    "t2granit": {
+      "id": "bordure-t2-granit",
+      "title": "T2 granit"
+    },
+    "t2beton": {
+      "id": "bordure-t2-beton",
+      "title": "T2 béton"
+    },
+    "a2beton": {
+      "id": "bordure-a2-beton",
+      "title": "A2 béton"
+    },
+    "p1beton": {
+      "id": "bordure-p1-beton",
+      "title": "P1 béton"
+    },
+    "cs1beton": {
+      "id": "bordure-cs1-beton",
+      "title": "CS1 béton"
+    },
+    "cs1granit": {
+      "id": "bordure-cs1-granit",
+      "title": "CS1 granit"
+    },
+    "cs1pavebeton": {
+      "id": "bordure-cs1-pave-beton",
+      "title": "CS1 pavé béton"
+    },
+    "cc1beton": {
+      "id": "bordure-cc1-beton",
+      "title": "CC1 béton"
+    }
+  },
   "bench-orientation": {
     "left": {
       "id": "direction-left",

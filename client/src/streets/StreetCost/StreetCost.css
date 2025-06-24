@@ -1,7 +1,7 @@
 .cost-container {
   min-width: 200px;
   max-width: 330px;
-  z-index: var(--z-07-street-cost);
+  z-index: var(--z-05-street-cost);
   flex-direction: column;
   align-items: flex-start;
   line-height: 0;

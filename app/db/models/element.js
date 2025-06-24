@@ -44,6 +44,10 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         field: 'sur30_count_co2'
       },
+      colour: {
+        type: DataTypes.STRING,
+        allowNull: true
+      },
       createdAt: {
         type: DataTypes.DATE,
         field: 'created_at',

@@ -21,7 +21,6 @@ function ElevationControl ({
   segment,
   forceEnable = false
 }: ElevationControlProps): React.ReactElement {
-  const isSubscriber = useSelector((state) => state.user.isSubscriber)
   const dispatch = useDispatch()
   const intl = useIntl()
 
@@ -70,25 +69,10 @@ function ElevationControl ({
 
     if (icon === undefined) return null
 
-    let title = intl.formatMessage({
+    const title = intl.formatMessage({
       id: `variant-icons.${set}|${selection}`,
       defaultMessage: icon.title
     })
-
-    // Only subscribers can do this
-    let isLocked = false
-
-    if (!isSubscriber && !forceEnable) {
-      isLocked = true
-      const unlockConditionText = intl.formatMessage({
-        id: 'plus.locked.sub',
-        // Default message ends with a Unicode-only left-right order mark
-        // to allow for proper punctuation in `rtl` text direction
-        // This character is hidden from editors by default!
-        defaultMessage: 'Upgrade to Streetmix+ to use!‎'
-      })
-      title += ' — ' + unlockConditionText
-    }
 
     const isSelected = isVariantCurrentlySelected(selection)
 
@@ -96,7 +80,7 @@ function ElevationControl ({
       <Button
         title={title}
         className={isSelected ? 'variant-selected' : undefined}
-        disabled={isSelected || isLocked}
+        disabled={isSelected}
         onClick={getButtonOnClickHandler(selection)}
       >
         <svg
@@ -107,7 +91,6 @@ function ElevationControl ({
           {/* `xlinkHref` is preferred over `href` for compatibility with Safari */}
           <use xlinkHref={`#icon-${icon.id}`} />
         </svg>
-        {isLocked && <Icon name="lock" />}
       </Button>
     )
   }

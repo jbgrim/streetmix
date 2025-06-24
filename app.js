@@ -18,7 +18,7 @@ import appURL from './app/lib/url.js'
 import apiRoutes from './app/api_routes.js'
 import serviceRoutes from './app/service_routes.js'
 import logger from './app/lib/logger.js'
-import { jwtCheck } from './app/authentication.js'
+import { wrappedCheck as jwtCheck } from './app/authentication.js'
 
 initCloudinary()
 
@@ -130,7 +130,7 @@ const csp = {
   // Reported CSP violations should be addressed before releasing to
   // production. IF A NEW FEATURE IS REPORTING A CSP VIOLATION, IT WILL
   // FAIL IN PRODUCTION, EVEN THOUGH IT WORKS IN DEVELOPMENT MODE.
-  reportOnly: process.env.NODE_ENV === 'development'
+  reportOnly: process.env.NODE_ENV !== 'production'
 }
 
 // Allows websockets for hot-module reloading

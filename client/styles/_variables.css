@@ -185,6 +185,7 @@
   --z-03-gallery-message: var(--z-index-03);
   --z-04-drag-layer: var(--z-index-04);
   --z-05-welcome: var(--z-index-05);
+  --z-05-street-cost: var(--z-index-05);
   --z-06-info-bubble: var(--z-index-06);
   --z-06-drag-handle: var(--z-index-06);
   --z-07-street-scroll: var(--z-index-07);
@@ -192,7 +193,6 @@
   --z-07-trashcan: var(--z-index-07);
   --z-07-resize-guide: var(--z-index-07);
   --z-07-debug-hover-polygon: var(--z-index-07);
-  --z-07-street-cost: var(--z-index-07);
   --z-07-sky-picker: calc(var(--z-index-07) + 50);
   --z-07-menu: calc(var(--z-index-07) + 75);
   --z-08-dialog-box-backdrop: var(--z-index-08);

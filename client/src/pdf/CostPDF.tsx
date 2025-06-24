@@ -1,18 +1,28 @@
 import React from 'react'
 import { Page, Text, View, Document, Image } from '@react-pdf/renderer'
-import { type StreetState } from '@streetmix/types'
+import { type Element, type Material, type StreetState } from '@streetmix/types'
 import logo from 'url:./ressources/Logo_SCE.png'
 import { styles } from '~src/pdf/styles'
 import DetailSection from '~src/pdf/Sections/DetailSection'
 import SynthesisSection from '~src/pdf/Sections/SynthesisSection'
+import HypothesisSection from '~src/pdf/Sections/HypothesisSection'
 
 // Create Document Component
 interface CostPDFProps {
   street: StreetState
+  elementArray: Element[]
+  materialArray: Material[]
   author?: string
+  locale?: string
 }
 
-export function CostPDF ({ street, author }: CostPDFProps): React.ReactElement {
+export function CostPDF ({
+  street,
+  author,
+  locale,
+  elementArray,
+  materialArray
+}: CostPDFProps): React.ReactElement {
   const streetName = street.name ?? 'Rue sans nom'
   return (
     <Document
@@ -23,9 +33,6 @@ export function CostPDF ({ street, author }: CostPDFProps): React.ReactElement {
         <View style={styles.header}>
           <View style={styles.project}>
             <Text>Projet : {street.name ?? 'Rue sans nom'}</Text>
-            <Text>Numero de projet : TODO</Text>
-            <Text>Maitre d’ouvrage : TODO</Text>
-            <Text>Chef de projet : TODO</Text>
           </View>
           <Image src={logo} style={styles.logo} />
         </View>
@@ -41,9 +48,19 @@ export function CostPDF ({ street, author }: CostPDFProps): React.ReactElement {
               Aménagement de {streetName}
             </Text>
           </View>
-          <SynthesisSection street={street} />
-          <DetailSection street={street} />
-          <DetailSection street={street} />
+          <SynthesisSection
+            street={street}
+            locale={locale}
+            elementArray={elementArray}
+            materialArray={materialArray}
+          />
+          <DetailSection
+            street={street}
+            locale={locale}
+            elementArray={elementArray}
+            materialArray={materialArray}
+          />
+          <HypothesisSection />
         </View>
       </Page>
     </Document>

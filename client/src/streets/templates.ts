@@ -39,6 +39,8 @@ const ROUGH_CONVERSION_RATE = (10 / 3) * 0.3048
 // Server is now the source of truth of this value
 const LATEST_SCHEMA_VERSION = 32
 
+const DEFAULT_CATEGORY = 'Voirie trafic faible'
+
 function processTemplateSlices (
   slices: SliceItemTemplate[],
   units: UnitsSetting
@@ -106,6 +108,7 @@ function processTemplateSlices (
     }
 
     slice.elevation = variantInfo.elevation ?? 0
+    slice.category = variantInfo.category ?? DEFAULT_CATEGORY
 
     processed.push(slice)
   }

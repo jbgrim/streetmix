@@ -21,26 +21,11 @@ export interface Segment {
   variant: Record<string, string>
   warnings: boolean[]
   label?: string
-  material: string
+  material: string | { eur: number; co2: number; eur30: number; co230: number }
+  category: string
 }
 
 export type SliceItem = Segment // Alias for future use
-
-export interface Material {
-  id: string
-  cost: {
-    co2: number
-    price: number
-    fixedCo2: number
-    fixedPrice: number
-  }
-  thirtyYears: {
-    co2: number
-    price: number
-    fixedCo2: number
-    fixedPrice: number
-  }
-}
 
 export interface WidthDefinition {
   metric: number // in meters
@@ -197,6 +182,7 @@ export interface SliceVariantDetails {
     components?: SliceVariantComponentDefinition[]
     effects?: SliceVariantComponentDefinition[]
   }
+  category: string
 }
 
 export interface SegmentLookup {
@@ -219,6 +205,7 @@ export interface SegmentLookup {
   }
   variants: string[]
   details: Record<string, SliceVariantDetails>
+  category: string
 }
 
 export interface SegmentDefinition extends SegmentLookup {
@@ -239,6 +226,7 @@ export interface VariantInfo {
   maxWidth?: WidthDefinition
   elevation: number
   graphics: Record<string, unknown> // TODO
+  category: string
 }
 
 export interface UnknownVariantInfo extends Partial<VariantInfo> {
@@ -357,3 +345,32 @@ interface BoundaryDefinitionWithFloors extends BoundaryDefinitionBase {
 export type BoundaryDefinition =
   | BoundaryDefinitionBase
   | BoundaryDefinitionWithFloors
+
+export interface Element {
+  id: string
+  nom: string
+  category: string
+  roulement: string
+  base: string
+  forme: string
+  eur: number
+  co2: number
+  eur30: number
+  co230: number
+  color: string
+}
+
+export interface Material {
+  id: string
+  nom: string
+  eur: number
+  co2: number
+  eur30: number
+  co230: number
+  color: string
+}
+
+export interface CostsState {
+  elements: Element[]
+  materials: Material[]
+}

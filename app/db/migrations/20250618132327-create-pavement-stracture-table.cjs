@@ -14,6 +14,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
+      colour: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
       prix_projet: {
         type: Sequelize.STRING
       },

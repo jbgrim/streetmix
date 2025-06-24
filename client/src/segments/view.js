@@ -289,7 +289,8 @@ export function drawSegmentContents (
   elevation = 0,
   randSeed,
   multiplier,
-  dpi
+  dpi,
+  color
 ) {
   const variantInfo = getSegmentVariantInfo(type, variantString)
   const graphics = variantInfo.graphics
@@ -306,6 +307,19 @@ export function drawSegmentContents (
     groundBaseline -
     multiplier * (groundLevelOffset / TILESET_POINT_PER_PIXEL || 0)
 
+  // draw the ground if a color is provided
+  if (color) {
+    // fix wrong formating
+    if (color[0] !== '#') color = '#' + color
+    ctx.fillStyle = color
+    ctx.fillRect(
+      offsetLeft * dpi - left * TILE_SIZE * multiplier * dpi,
+      groundLevel * dpi,
+      segmentWidth * multiplier * dpi,
+      (ctx.canvas.height / dpi - groundLevel) * multiplier * dpi
+    )
+  }
+
   if (graphics.repeat) {
     // Convert single string or object values to single-item array
     let sprites = Array.isArray(graphics.repeat)
@@ -320,6 +334,9 @@ export function drawSegmentContents (
     for (let l = 0; l < sprites.length; l++) {
       const sprite = getSpriteDef(sprites[l].id)
       const svg = images.get(sprite.id)
+
+      // skip ground if a color has been supplied
+      if (color && sprite.id.includes('ground')) continue
 
       // Skip drawing if sprite is missing
       if (!svg) continue

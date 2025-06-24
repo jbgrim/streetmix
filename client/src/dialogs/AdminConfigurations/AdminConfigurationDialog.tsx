@@ -29,7 +29,7 @@ interface AdminConfigurationDialogProps {
 }
 
 // Row Data: The data to be displayed.
-interface ElementRowData {
+export interface ElementRowData {
   id: string
   nom: string
   category: string
@@ -40,9 +40,10 @@ interface ElementRowData {
   countCo2: string
   sur30CountEur: string
   sur30CountCo2: string
+  colour: string
 }
 
-interface PavementStructureRowData {
+export interface PavementStructureRowData {
   id: string
   nom: string
   prixProjet: string
@@ -62,6 +63,7 @@ interface ElementColumnData {
   countCo2: string
   sur30CountEur: string
   sur30CountCo2: string
+  colour: string
 }
 
 interface PavementStructureColumnData {
@@ -104,7 +106,8 @@ function AdminConfigurationDialog (): React.ReactElement {
       headerName: 'Sur 30 Count Co2',
       editable: true,
       hide: false
-    }
+    },
+    { field: 'colour', headerName: 'Couleur', editable: true, hide: false }
   ])
 
   const [pavementStructureColumnDefs] = useState<
@@ -160,7 +163,8 @@ function AdminConfigurationDialog (): React.ReactElement {
     countEur: row.countEur ?? row['Count €'],
     countCo2: row.countCo2 ?? row['Count Co2'],
     sur30CountEur: row.sur30CountEur ?? row['Sur 30 Count €'],
-    sur30CountCo2: row.sur30CountCo2 ?? row['Sur 30 Count Co2']
+    sur30CountCo2: row.sur30CountCo2 ?? row['Sur 30 Count Co2'],
+    colour: row.colour ?? row.Couleur
   })
 
   const transformPavementStructureKeys = (

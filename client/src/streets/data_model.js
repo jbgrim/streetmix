@@ -119,7 +119,9 @@ export function trimStreetData (street) {
         variantString: origSegment.variantString,
         width: origSegment.width,
         elevation: origSegment.elevation,
-        label: origSegment.label
+        label: origSegment.label,
+        category: origSegment.category,
+        material: origSegment.material
       }
 
       return segment
@@ -179,6 +181,7 @@ function processTemplateSlices (slices, units) {
 
     slice.elevation = variantInfo.elevation
     slice.warnings = [false]
+    slice.category = variantInfo.category
 
     processed.push(slice)
   }

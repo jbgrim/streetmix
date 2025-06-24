@@ -64,6 +64,7 @@
     "react-markdown": "10.1.0",
     "react-redux": "9.2.0",
     "react-spring": "10.0.1",
+    "react-string-replace": "1.1.1",
     "react-transition-group": "4.4.5",
     "rehype-external-links": "3.0.0",
     "seedrandom": "3.0.5",

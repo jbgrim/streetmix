@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="594mm"
+   height="420mm"
+   viewBox="0 0 2245.0393 1587.4016"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   sodipodi:docname="Bordure CC1 Béton.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.28286025"
+     inkscape:cx="915.64651"
+     inkscape:cy="938.62605"
+     inkscape:window-width="1600"
+     inkscape:window-height="837"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#e4e2dc;stroke-width:0.854628"
+       id="rect1"
+       width="1398.4252"
+       height="377.95276"
+       x="56.692921"
+       y="75.590561" />
+    <rect
+       style="fill:#e4e2dc"
+       id="rect2"
+       width="56.692913"
+       height="396.8504"
+       x="1.8222656e-05"
+       y="56.692917" />
+    <rect
+       style="fill:#e4e2dc"
+       id="rect2-8"
+       width="56.692913"
+       height="396.8504"
+       x="1455.1182"
+       y="56.692917" />
+    <path
+       style="fill:#e4e2dc"
+       d="M 0,56.69292 56.69293,2e-5 v 56.6929 z"
+       id="path3" />
+    <path
+       style="fill:#e4e2dc"
+       d="M 1511.811,56.69292 1455.1181,2e-5 v 56.6929 z"
+       id="path3-5" />
+    <path
+       style="fill:#e4e2dc"
+       d="M 56.692928,2e-5 755.90548,75.59057 c 0,0 -699.212552,0 -699.212552,0 z"
+       id="path4" />
+    <path
+       style="fill:#e4e2dc"
+       d="M 1455.1181,0 755.90549,75.59056 c 0,0 699.21261,0 699.21261,0 z"
+       id="path4-1" />
+  </g>
+</svg>

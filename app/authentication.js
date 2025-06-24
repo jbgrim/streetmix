@@ -9,7 +9,7 @@ const secret = jwksRsa.expressJwtSecret({
   jwksUri: `https://${process.env.AUTH0_DOMAIN}/.well-known/jwks.json`
 })
 
-export const jwtCheck = expressjwt({
+const jwtCheck = expressjwt({
   algorithms: ['RS256'],
   secret,
   issuer: `https://${process.env.AUTH0_DOMAIN}/`,

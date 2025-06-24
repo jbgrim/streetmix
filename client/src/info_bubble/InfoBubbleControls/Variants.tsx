@@ -4,7 +4,8 @@ import { useIntl } from 'react-intl'
 import { useSelector, useDispatch } from '~/src/store/hooks'
 import {
   setBuildingVariant,
-  changeSegmentVariant
+  changeSegmentVariant,
+  changeSegmentProperties
 } from '~/src/store/slices/street'
 import { segmentsChanged } from '~/src/segments/view'
 import { getSegmentInfo } from '~/src/segments/info'
@@ -24,6 +25,8 @@ import {
 import ElevationControl from './ElevationControl'
 
 import type { BoundaryPosition } from '@streetmix/types'
+import MaterialControl from '~src/info_bubble/InfoBubbleControls/MaterialControl'
+import CustomControl from '~src/info_bubble/InfoBubbleControls/CustomControl'
 
 interface VariantsProps {
   type: number
@@ -51,10 +54,9 @@ function Variants (props: VariantsProps): React.ReactElement | null {
     return null
   })
   const flags = useSelector((state) => state.flags)
-  const isSignedIn = useSelector((state) => state.user.signedIn)
-  const isSubscriber = useSelector((state) => state.user.isSubscriber)
   const dispatch = useDispatch()
   const intl = useIntl()
+  const elements = useSelector((state) => state.costs.elements)
 
   let variantSets: string[] = []
   let elevationToggle = false
@@ -106,9 +108,24 @@ function Variants (props: VariantsProps): React.ReactElement | null {
 
     switch (type) {
       case INFO_BUBBLE_TYPE_SEGMENT:
-        handler = () => {
-          dispatch(changeSegmentVariant(position, set, selection))
-          segmentsChanged()
+        // modification du matériau s'il s'agit d'une bordure
+        if (segment.type === 'bordure' && set === 'bordure-type') {
+          const icon = VARIANT_ICONS[set][selection]
+          const element = elements.find(
+            (material) => material.nom === icon.title
+          )
+          handler = () => {
+            dispatch(changeSegmentVariant(position, set, selection))
+            dispatch(
+              changeSegmentProperties(position, { material: element.id })
+            )
+            segmentsChanged()
+          }
+        } else {
+          handler = () => {
+            dispatch(changeSegmentVariant(position, set, selection))
+            segmentsChanged()
+          }
         }
         break
       case INFO_BUBBLE_TYPE_LEFT_BUILDING:
@@ -143,52 +160,10 @@ function Variants (props: VariantsProps): React.ReactElement | null {
       if (!flag?.value) return null
     }
 
-    let title = intl.formatMessage({
+    const title = intl.formatMessage({
       id: `variant-icons.${set}|${selection}`,
       defaultMessage: icon.title
     })
-
-    let isLocked = false
-
-    // If there is an enable condition, add a note to the tooltip if it
-    // is locked for a reason (e.g. must sign in, must be a subscriber)
-    // If an "unlock flag" is set, enable the thing
-    if (
-      icon.unlockCondition !== undefined &&
-      !(icon.unlockWithFlag !== undefined && flags[icon.unlockWithFlag]?.value)
-    ) {
-      let unlockConditionText
-      switch (icon.unlockCondition) {
-        case 'SUBSCRIBE':
-          if (!isSubscriber) {
-            isLocked = true
-            unlockConditionText = intl.formatMessage({
-              id: 'plus.locked.sub',
-              // Default message ends with a Unicode-only left-right order mark
-              // to allow for proper punctuation in `rtl` text direction
-              // This character is hidden from editors by default!
-              defaultMessage: 'Upgrade to Streetmix+ to use!‎'
-            })
-          }
-          break
-        case 'SIGN_IN':
-        default:
-          if (!isSignedIn) {
-            isLocked = true
-            unlockConditionText = intl.formatMessage({
-              id: 'plus.locked.user',
-              // Default message ends with a Unicode-only left-right order mark
-              // to allow for proper punctuation in `rtl` text direction
-              // This character is hidden from editors by default!
-              defaultMessage: 'Sign in to use!‎'
-            })
-          }
-          break
-      }
-      if (unlockConditionText !== undefined) {
-        title += ' — ' + unlockConditionText
-      }
-    }
 
     const isSelected = isVariantCurrentlySelected(set, selection)
 
@@ -197,7 +172,7 @@ function Variants (props: VariantsProps): React.ReactElement | null {
         key={set + '.' + selection}
         title={title}
         className={isSelected ? 'variant-selected' : undefined}
-        disabled={isSelected || isLocked}
+        disabled={isSelected}
         onClick={getButtonOnClickHandler(set, selection)}
       >
         <svg
@@ -209,7 +184,6 @@ function Variants (props: VariantsProps): React.ReactElement | null {
           {/* `xlinkHref` is preferred over `href` for compatibility with Safari */}
           <use xlinkHref={`#icon-${icon.id}`} />
         </svg>
-        {isLocked && <Icon name="lock" />}
       </Button>
     )
   }
@@ -262,6 +236,11 @@ function Variants (props: VariantsProps): React.ReactElement | null {
           )
         }
 
+        variantEls.push(<hr />)
+        variantEls.push(
+          <MaterialControl position={position} segment={segment} />
+        )
+
         break
       }
       case INFO_BUBBLE_TYPE_LEFT_BUILDING:
@@ -282,7 +261,12 @@ function Variants (props: VariantsProps): React.ReactElement | null {
   // Do not render this component if there are no variants to select
   if (variantSets.length === 0) return null
 
-  return <div className="variants">{renderVariantsSelection()}</div>
+  return (
+    <>
+      {segment?.type === 'custom' && <CustomControl position={position} />}
+      <div className="variants">{renderVariantsSelection()}</div>
+    </>
+  )
 }
 
 export default Variants

@@ -914,12 +914,7 @@ router.put('/v1/votes', cors(), jwtCheck, v1.votes.put)
  */
 router.post('/v1/admin/signin', v1.admin.adminSignIn)
 
-router.get(
-  '/v1/admin/elements',
-  cors(),
-  adminJwtCheck,
-  v1.admin.getAllElementData
-)
+router.get('/v1/admin/elements', cors(), v1.admin.getAllElementData)
 
 router.put(
   '/v1/admin/elements',
@@ -931,7 +926,6 @@ router.put(
 router.get(
   '/v1/admin/pavement-structure',
   cors(),
-  adminJwtCheck,
   v1.admin.getAllPavementStructureData
 )
 

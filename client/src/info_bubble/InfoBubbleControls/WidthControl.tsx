@@ -92,6 +92,7 @@ function WidthControl ({ position }: WidthControlProps): React.ReactElement {
           defaultMessage: 'Decrease width (hold Shift for more precision)'
         })}
       />
+      {}
     </div>
   )
 }

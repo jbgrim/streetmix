@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { type Material } from '@streetmix/types'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { PDFDownloadLink } from '@react-pdf/renderer'
@@ -6,59 +6,79 @@ import { useSelector } from '~src/store/hooks'
 import { CostPDF } from '~src/pdf/CostPDF'
 import './StreetCost.css'
 import { useGetUserQuery } from '~src/store/services/api'
-
-function getMaterial (name: string): Material {
-  if (name === 'trottoir') {
-    return {
-      id: 'trottoir',
-      cost: { price: 2, co2: 2, fixedCo2: 0, fixedPrice: 0 },
-      thirtyYears: { price: 2, co2: 2, fixedCo2: 0, fixedPrice: 0 }
-    }
-  }
-  return {
-    id: 'default',
-    cost: { price: 1, co2: 1, fixedPrice: 0, fixedCo2: 0 },
-    thirtyYears: { price: 1, co2: 1, fixedPrice: 0, fixedCo2: 0 }
-  }
-}
+import { getVariantArray } from '~src/segments/variant_utils'
 
 function StreetCost (): React.ReactElement {
   // récupère l'objet street qui contient la liste des segments
   const street = useSelector((state) => state.street)
   const [generated, setGenerated] = React.useState(false)
+  const { elements, materials } = useSelector((state) => state.costs)
   const { locale } = useIntl()
   const { price, co2, thirtyYearsPrice, thirtyYearsCo2 } = useMemo(
     () =>
       street.segments.reduce(
         (sum, segment) => {
-          // Pour chacun des segments, on récupère le matériau
-          const material = getMaterial(segment.material)
-          // puis on ajoute à chacun des accumulateurs le coût linéaire multiplié par la largeur et le coût fixe
+          let material
+          if (typeof segment.material === 'string') {
+            // Pour chacun des segments, on récupère le matériau
+            material = elements.find(
+              (element) => element.id === segment.material
+            )
+          } else {
+            material = segment.material
+          }
+          if (!material) {
+            console.error('Material not found (' + segment.material + ')')
+            return sum
+          }
+          // on ajoute le coût fixe si le segment est un arbre
+          if (segment.type === 'sidewalk-tree') {
+            const tree = materials.find((material) => material.nom === 'Arbre')
+            if (!tree) {
+              console.error('tree not found')
+            } else {
+              sum.price += tree.eur
+              sum.co2 += tree.co2
+              sum.thirtyYearsPrice += tree.eur30
+              sum.thirtyYearsCo2 += tree.co230
+            }
+          }
+          // on ajoute le coût fixe si le segment est un lampadaire, en fonction du type de lampadaire
+          if (segment.type === 'sidewalk-lamp') {
+            const lamp = materials.find(
+              (material) =>
+                material.nom ===
+                (getVariantArray(segment.type, segment.variantString)[
+                  'lamp-type'
+                ] === 'traditional'
+                  ? 'Candélabre 6m'
+                  : 'Candélabre 8m')
+            )
+            if (!lamp) {
+              console.error('lamp not found')
+            } else {
+              sum.price += lamp.eur
+              sum.co2 += lamp.co2
+              sum.thirtyYearsPrice += lamp.eur30
+              sum.thirtyYearsCo2 += lamp.co230
+            }
+          }
+          // puis on ajoute à chacun des accumulateurs le coût linéaire multiplié par la largeur
           return {
-            price:
-              sum.price +
-              material.cost.price * segment.width +
-              material.cost.fixedPrice,
-            co2:
-              sum.co2 +
-              material.cost.co2 * segment.width +
-              material.cost.fixedCo2,
+            price: sum.price + material.eur * segment.width,
+            co2: sum.co2 + material.co2 * segment.width,
             thirtyYearsPrice:
-              sum.thirtyYearsPrice +
-              material.thirtyYears.price * segment.width +
-              material.thirtyYears.fixedCo2,
-            thirtyYearsCo2:
-              sum.thirtyYearsCo2 +
-              material.thirtyYears.co2 * segment.width +
-              material.thirtyYears.fixedCo2
+              sum.thirtyYearsPrice + material.eur30 * segment.width,
+            thirtyYearsCo2: sum.thirtyYearsCo2 + material.co230 * segment.width
           }
         },
         { price: 0, co2: 0, thirtyYearsPrice: 0, thirtyYearsCo2: 0 }
       ),
-    [street]
+    [elements, street.segments]
   )
   const { data: creatorProfile } = useGetUserQuery(street.creatorId)
 
+  // Réinitialise le PDF lorsque la rue est modifiée
   useEffect(() => {
     setGenerated(false)
   }, [street])
@@ -129,6 +149,9 @@ function StreetCost (): React.ReactElement {
                   author={
                   creatorProfile?.displayName ?? street.creatorId ?? undefined
                 }
+                  locale={locale}
+                  elementArray={elements}
+                  materialArray={materials}
                 />
             }
               fileName="costs.pdf"
