@@ -1,6 +1,5 @@
 import Cookies from 'js-cookie'
 import { jwtDecode } from 'jwt-decode'
-import * as Sentry from '@sentry/browser'
 
 import USER_ROLES from '../../../app/data/user_roles.json'
 import { app } from '../preinit/app_settings'
@@ -126,7 +125,6 @@ export async function loadSignIn () {
       jwtDecode(signInData.token)
     }
   } catch (error) {
-    Sentry.captureMessage('Error parsing jwt token ', signInData?.token)
     clearAllClientSignInData()
     setMode(MODES.AUTH_EXPIRED)
     processMode()

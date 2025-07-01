@@ -10,9 +10,7 @@
   "type": "module",
   "scripts": {
     "build": "parcel build src/main.tsx --dist-dir ../build --public-url /assets",
-    "postbuild": "npm run sentry:sourcemaps",
-    "dev": "parcel watch src/main.tsx --dist-dir ../build --public-url /assets",
-    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org streetmix --project streetmix ../build && sentry-cli sourcemaps upload --org streetmix --project streetmix ../build"
+    "dev": "parcel watch src/main.tsx --dist-dir ../build --public-url /assets"
   },
   "dependencies": {
     "@floating-ui/react": "0.27.8",
@@ -28,9 +26,9 @@
     "@radix-ui/react-radio-group": "1.3.7",
     "@radix-ui/react-slider": "1.3.5",
     "@radix-ui/react-switch": "1.2.5",
+    "@react-pdf/primitives": "4.1.1",
+    "@react-pdf/renderer": "4.3.0",
     "@reduxjs/toolkit": "2.8.2",
-    "@sentry/browser": "9.22.0",
-    "@sentry/cli": "2.45.0",
     "ag-grid-react": "33.3.2",
     "auth0": "4.23.0",
     "auth0-js": "9.28.0",

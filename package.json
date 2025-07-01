@@ -67,6 +67,7 @@
   },
   "dependencies": {
     "@babel/eslint-parser": "7.27.5",
+    "@react-pdf/primitives": "4.1.1",
     "@react-pdf/renderer": "4.3.0",
     "ag-grid-react": "33.3.2",
     "auth0": "4.26.0",
