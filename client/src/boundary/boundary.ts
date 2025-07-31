@@ -20,11 +20,15 @@ import type {
   BoundaryPosition,
   UnitsSetting
 } from '@streetmix/types'
+import { Boundary } from '~src/boundary/index'
 
 export const GROUND_BASELINE_HEIGHT = 44
 
 export function getBoundaryItem (variant: string): BoundaryDefinition {
   const item = BOUNDARY_DEFS[variant]
+  if (!item) {
+    return BOUNDARY_DEFS.grass
+  }
   if (item.id === undefined) {
     item.id = variant
   }
