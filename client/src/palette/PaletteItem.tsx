@@ -86,7 +86,7 @@ function PaletteItem ({ segment }: PaletteItemProps): React.ReactElement | null 
   return (
     <li className={classNames.join(' ')} ref={isLocked ? null : drag}>
       <Tooltip label={getLabel(segment)} sublabel={sublabel}>
-        <button>
+        <button style={{ padding: 0 }}>
           <img
             className="palette-item-image"
             src={thumbnail}
