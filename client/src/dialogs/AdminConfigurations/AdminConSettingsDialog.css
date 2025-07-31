@@ -5,6 +5,8 @@
   max-height: 90vh;
   display: flex;
   flex-direction: column;
+  resize: both;
+  overflow: auto;
 }
 
 .dialog-content {
