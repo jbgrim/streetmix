@@ -86,7 +86,10 @@ function StreetCost (): React.ReactElement {
   return (
     <div className="cost-container">
       <h3>
-        <FormattedMessage id="cost.cost" defaultMessage="Construction cost" />
+        <FormattedMessage
+          id="cost.cost"
+          defaultMessage="Construction cost (per ml)"
+        />
       </h3>
       <p>
         <FormattedMessage
@@ -103,7 +106,7 @@ function StreetCost (): React.ReactElement {
       <p>
         <FormattedMessage
           id="cost.co2"
-          defaultMessage="Emissions: {co2}CO2"
+          defaultMessage="Emissions: {co2}CO2eq"
           values={{
             co2: co2.toLocaleString(locale, { style: 'unit', unit: 'kilogram' })
           }}
@@ -112,7 +115,7 @@ function StreetCost (): React.ReactElement {
       <h3>
         <FormattedMessage
           id="cost.thirtyYears"
-          defaultMessage="Cost for 30 years"
+          defaultMessage="Cost for 30 years (per ml)"
         />
       </h3>
       <p>
@@ -130,7 +133,7 @@ function StreetCost (): React.ReactElement {
       <p>
         <FormattedMessage
           id="cost.co2"
-          defaultMessage="Emissions: {co2}CO2"
+          defaultMessage="Emissions: {co2}CO2eq"
           values={{
             co2: thirtyYearsCo2.toLocaleString(locale, {
               style: 'unit',
@@ -157,7 +160,7 @@ function StreetCost (): React.ReactElement {
               fileName="costs.pdf"
             >
               {({ blob, url, loading, error }) =>
-                loading ? 'Loading document...' : 'Download now!'}
+                loading ? 'Génération en cours...' : 'Télécharger maintenant !'}
             </PDFDownloadLink>
             )
           : (
@@ -166,7 +169,7 @@ function StreetCost (): React.ReactElement {
                 setGenerated(true)
               }}
             >
-              Generate document!
+              Générer le détail des coûts
             </a>
             )}
       </p>

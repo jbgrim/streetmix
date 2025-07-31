@@ -537,8 +537,8 @@
   "cost": {
     "title": "Résumé des coûts",
     "price": "Prix : {price}",
-    "co2": "Émissions : {co2}CO2",
-    "cost": "Coût de construction",
-    "thirtyYears": "Coût sur 30 ans"
+    "co2": "Émissions : {co2}CO2éq",
+    "cost": "Coût de construction (par ml)",
+    "thirtyYears": "Coût sur 30 ans (par ml)"
   }
 }
