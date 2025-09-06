@@ -3,7 +3,7 @@ import { FormattedMessage } from 'react-intl'
 import { useDispatch } from 'react-redux'
 
 import Dialog from '../Dialog'
-import './AdminConSettingsDialog.css'
+import './AdminConfigurationDialog.css'
 
 import {
   AllCommunityModule,
@@ -83,60 +83,158 @@ function AdminConfigurationDialog (): React.ReactElement {
   const [isPavementStructureLoading, setIsPavementStructureLoading] =
     useState(false)
   const [columnDefs] = useState<ColDef<ElementColumnData>[]>([
-    { field: 'category', headerName: 'Category', editable: true, hide: false },
-    { field: 'nom', headerName: 'Nom', hide: false },
+    {
+      field: 'category',
+      headerName: 'Category',
+      editable: true,
+      hide: false,
+      width: 120,
+      minWidth: 100,
+      maxWidth: 200,
+      resizable: true
+    },
+    {
+      field: 'nom',
+      headerName: 'Nom',
+      hide: false,
+      width: 150,
+      minWidth: 120,
+      maxWidth: 250,
+      resizable: true
+    },
     {
       field: 'roulement',
       headerName: 'Roulement',
       editable: true,
-      hide: false
+      hide: false,
+      width: 120,
+      minWidth: 100,
+      maxWidth: 200,
+      resizable: true
     },
-    { field: 'base', headerName: 'Base', editable: true, hide: false },
-    { field: 'forme', headerName: 'Forme', editable: true, hide: false },
-    { field: 'countEur', headerName: 'Count €', editable: true, hide: false },
-    { field: 'countCo2', headerName: 'Count Co2', editable: true, hide: false },
+    {
+      field: 'base',
+      headerName: 'Base',
+      editable: true,
+      hide: false,
+      width: 100,
+      minWidth: 80,
+      maxWidth: 150,
+      resizable: true
+    },
+    {
+      field: 'forme',
+      headerName: 'Forme',
+      editable: true,
+      hide: false,
+      width: 100,
+      minWidth: 80,
+      maxWidth: 150,
+      resizable: true
+    },
+    {
+      field: 'countEur',
+      headerName: 'Count €',
+      editable: true,
+      hide: false,
+      width: 110,
+      minWidth: 90,
+      maxWidth: 180,
+      resizable: true
+    },
+    {
+      field: 'countCo2',
+      headerName: 'Count Co2',
+      editable: true,
+      hide: false,
+      width: 110,
+      minWidth: 90,
+      maxWidth: 180,
+      resizable: true
+    },
     {
       field: 'sur30CountEur',
       headerName: 'Sur 30 Count €',
       editable: true,
-      hide: false
+      hide: false,
+      width: 140,
+      minWidth: 120,
+      maxWidth: 220,
+      resizable: true
     },
     {
       field: 'sur30CountCo2',
       headerName: 'Sur 30 Count Co2',
       editable: true,
-      hide: false
+      hide: false,
+      width: 140,
+      minWidth: 120,
+      maxWidth: 220,
+      resizable: true
     },
-    { field: 'colour', headerName: 'Couleur', editable: true, hide: false }
+    {
+      field: 'colour',
+      headerName: 'Couleur',
+      editable: true,
+      hide: false,
+      width: 100,
+      minWidth: 80,
+      maxWidth: 150,
+      resizable: true
+    }
   ])
 
   const [pavementStructureColumnDefs] = useState<
     ColDef<PavementStructureColumnData>[]
   >([
-    { field: 'nom', headerName: 'Nom', hide: false },
+    {
+      field: 'nom',
+      headerName: 'Nom',
+      hide: false,
+      width: 200,
+      minWidth: 150,
+      maxWidth: 300,
+      resizable: true
+    },
     {
       field: 'prixProjet',
       headerName: 'Prix Projet',
       editable: true,
-      hide: false
+      hide: false,
+      width: 140,
+      minWidth: 120,
+      maxWidth: 200,
+      resizable: true
     },
     {
       field: 'co2Projet',
       headerName: 'CO2 Projet',
       editable: true,
-      hide: false
+      hide: false,
+      width: 140,
+      minWidth: 120,
+      maxWidth: 200,
+      resizable: true
     },
     {
       field: 'prixSur30Ans',
       headerName: 'Prix Sur 30 Ans',
       editable: true,
-      hide: false
+      hide: false,
+      width: 160,
+      minWidth: 140,
+      maxWidth: 220,
+      resizable: true
     },
     {
       field: 'co2Sur30Ans',
       headerName: 'CO2 Sur 30 Ans',
       editable: true,
-      hide: false
+      hide: false,
+      width: 160,
+      minWidth: 140,
+      maxWidth: 220,
+      resizable: true
     }
   ])
 
@@ -354,10 +452,13 @@ function AdminConfigurationDialog (): React.ReactElement {
                         ref={elementGridRef}
                         rowData={rowElementData}
                         columnDefs={columnDefs}
-                        domLayout="autoHeight"
+                        domLayout="normal"
                         defaultColDef={{
-                          flex: 1,
-                          resizable: true
+                          resizable: true,
+                          sortable: true,
+                          filter: true,
+                          minWidth: 100,
+                          flex: 1
                         }}
                         sideBar={{
                           toolPanels: [
@@ -384,6 +485,11 @@ function AdminConfigurationDialog (): React.ReactElement {
                         }}
                         rowSelection="single"
                         onCellValueChanged={onElementCellValueChanged}
+                        pagination
+                        paginationPageSize={20}
+                        suppressRowClickSelection={false}
+                        enableCellTextSelection
+                        suppressCellFocus={false}
                       />
                       )}
                 </div>
@@ -409,10 +515,13 @@ function AdminConfigurationDialog (): React.ReactElement {
                         ref={pavementStructureGridRef}
                         rowData={rowPavementStructureData}
                         columnDefs={pavementStructureColumnDefs}
-                        domLayout="autoHeight"
+                        domLayout="normal"
                         defaultColDef={{
-                          flex: 1,
-                          resizable: true
+                          resizable: true,
+                          sortable: true,
+                          filter: true,
+                          minWidth: 120,
+                          flex: 1
                         }}
                         sideBar={{
                           toolPanels: [
@@ -439,6 +548,11 @@ function AdminConfigurationDialog (): React.ReactElement {
                         }}
                         rowSelection="single"
                         onCellValueChanged={onPavementStructureCellValueChanged}
+                        pagination
+                        paginationPageSize={20}
+                        suppressRowClickSelection={false}
+                        enableCellTextSelection
+                        suppressCellFocus={false}
                       />
                       )}
                 </div>

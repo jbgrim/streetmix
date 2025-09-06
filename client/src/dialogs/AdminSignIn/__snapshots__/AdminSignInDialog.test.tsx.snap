@@ -1,0 +1,85 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SignInDialog > renders 1`] = `
+<DocumentFragment>
+  <div
+    class="dialog-box-container"
+  >
+    <div
+      class="dialog-box-backdrop"
+    />
+    <div
+      class="dialog-box-display-area"
+    >
+      <div
+        class="dialog-box"
+        role="dialog"
+      >
+        <button
+          class="close"
+          title="Dismiss"
+        >
+          <svg
+            data-icon="close"
+            data-icon-source="test"
+          />
+        </button>
+        <div
+          class="admin-sign-in-dialog"
+        >
+          <header>
+            <h1>
+              Admin Sign In
+            </h1>
+          </header>
+          <div
+            class="dialog-content"
+          >
+            <p>
+              Sign in to access the admin dashboard.
+            </p>
+            <form>
+              <label
+                class="admin-sign-in-email-label"
+                for="«r0»"
+              >
+                Email
+              </label>
+              <input
+                class="admin-sign-in-input "
+                id="«r0»"
+                name="email"
+                placeholder="test@test.com"
+                required=""
+                type="email"
+                value=""
+              />
+              <label
+                class="admin-sign-in-password-label"
+                for="«r1»"
+              >
+                Password
+              </label>
+              <input
+                class="admin-sign-in-input"
+                id="«r1»"
+                name="password"
+                placeholder="Password"
+                required=""
+                type="password"
+                value=""
+              />
+              <button
+                class="btn btn-primary admin-sign-in-button"
+                type="submit"
+              >
+                Sign In
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
