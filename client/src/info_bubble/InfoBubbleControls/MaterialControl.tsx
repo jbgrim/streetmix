@@ -46,9 +46,11 @@ export default function MaterialControl ({
       const title =
         element.nom +
         ' - ' +
-        element.roulement +
-        (element.forme !== undefined ? '/' + element.forme : '') +
-        (element.base !== undefined ? '/' + element.base : '')
+        element.roulement.split(' - ')[0] +
+        (element.forme !== undefined
+          ? '/' + element.forme.split(' - ')[0]
+          : '') +
+        (element.base !== undefined ? '/' + element.base.split(' - ')[0] : '')
       const isSelected = element.id === segment.material
       return (
         <>
