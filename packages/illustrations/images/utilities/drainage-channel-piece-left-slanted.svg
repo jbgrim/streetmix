@@ -25,10 +25,10 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:zoom="12.575"
-     inkscape:cx="19.960239"
+     inkscape:cx="20"
      inkscape:cy="30.019881"
-     inkscape:window-width="1920"
-     inkscape:window-height="1080"
+     inkscape:window-width="1876"
+     inkscape:window-height="1006"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -45,11 +45,12 @@
      fill="#d8d3cb"
      fill-rule="nonzero"
      id="path1"
-     transform="matrix(1.27 0 0 1.27 -.132 60)" />
+     transform="matrix(1.27 0 0 1.27 -.132 60)"
+     style="fill:#89ba6a;fill-opacity:1" />
   <path
      d="m-.066 49.967 29.044-40.132h8.727l-34.524 47.105-3.149-.07z"
      fill="#c1bebb"
      id="path2"
      transform="matrix(-1 0 0 1 39.934 0)"
-     style="fill:#89ba6a;fill-opacity:1" />
+     style="fill:#679a45;fill-opacity:1" />
 </svg>

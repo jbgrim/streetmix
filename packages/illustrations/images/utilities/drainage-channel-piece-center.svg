@@ -25,10 +25,10 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:zoom="12.575"
-     inkscape:cx="20.039761"
+     inkscape:cx="20.079523"
      inkscape:cy="30.019881"
-     inkscape:window-width="1920"
-     inkscape:window-height="1080"
+     inkscape:window-width="1876"
+     inkscape:window-height="1006"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -38,14 +38,14 @@
      fill="#89ba6a"
      fill-rule="nonzero"
      id="path1"
-     style="stroke-width:0.66981" />
+     style="stroke-width:0.66981;fill:#679a45;fill-opacity:1" />
   <path
      d="M 0,25 H 40.00007 V 50 H 0 Z"
      fill="#4f83a3"
      id="path2"
      style="stroke-width:4.00289" />
   <rect
-     style="fill:#d8d3cb;fill-opacity:1;stroke-width:1.45285"
+     style="fill:#89ba6a;fill-opacity:1;stroke-width:1.45285"
      id="rect1"
      width="40"
      height="3"

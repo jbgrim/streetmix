@@ -42,7 +42,7 @@
      id="g2">
     <path
        d="M -7.10543e-15 49.967 L 40 49.967 L 40 60 L -7.10543e-15 60 L -7.10543e-15 49.967 Z"
-       style="fill:#d8d3cb;fill-opacity:1.0;stroke:none;stroke-opacity:1;opacity:1.0"
+       style="fill:#89ba6a;fill-opacity:1;stroke:none;stroke-opacity:1;opacity:1"
        id="path1" />
     <g
        style="display:none;opacity:1.0"
@@ -63,7 +63,7 @@
        width="40.00000000000023"
        height="6.952845785627005"
        rx="0.0"
-       style="fill:#89ba6a;fill-opacity:1;stroke:none;stroke-opacity:1;opacity:1"
+       style="fill:#679a45;fill-opacity:1;stroke:none;stroke-opacity:1;opacity:1"
        transform="translate(-1680, -582.742)"
        id="rect2" />
   </g>
@@ -141,7 +141,7 @@
        y="25" />
     <path
        d="M 40 60 L 24.9505 60 L 25.7622 9.835 L 40 9.835 L 40 60 Z"
-       style="fill:#d8d3cb;fill-opacity:1.0;stroke:none;stroke-opacity:1;opacity:1.0"
+       style="fill:#89ba6a;fill-opacity:1;stroke:none;stroke-opacity:1;opacity:1"
        id="path10" />
     <g
        style="display:none;opacity:1.0"
@@ -161,7 +161,7 @@
     </g>
     <path
        d="M 24.9505 56.9179 L 25.3798 9.835 L 32.8187 9.835 L 31.967 56.9179 L 24.9505 56.9179 Z"
-       style="fill:#89ba6a;fill-opacity:1;stroke:none;stroke-opacity:1;opacity:1"
+       style="fill:#679a45;fill-opacity:1;stroke:none;stroke-opacity:1;opacity:1"
        id="path13" />
   </g>
   <g
@@ -171,7 +171,7 @@
      id="g17">
     <path
        d="M 0 9.835 L 14.0293 9.835 L 15.0495 59.8613 L 0 60 L 0 9.835 Z"
-       style="fill:#d8d3cb;fill-opacity:1.0;stroke:none;stroke-opacity:1;opacity:1.0"
+       style="fill:#89ba6a;fill-opacity:1;stroke:none;stroke-opacity:1;opacity:1"
        id="path14" />
     <g
        style="display:none;opacity:1.0"
@@ -191,7 +191,7 @@
     </g>
     <path
        d="M 8.033 56.8597 L 7.28977 9.835 L 14.4384 9.835 L 15.0495 56.8597 L 8.033 56.8597 Z"
-       style="fill:#89ba6a;fill-opacity:1;stroke:none;stroke-opacity:1;opacity:1"
+       style="fill:#679a45;fill-opacity:1;stroke:none;stroke-opacity:1;opacity:1"
        id="path17" />
   </g>
   <title
