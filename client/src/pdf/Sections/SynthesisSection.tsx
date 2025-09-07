@@ -7,7 +7,7 @@ import { styles } from '~src/pdf/styles'
 import { getVariantArray } from '~src/segments/variant_utils'
 
 interface Segment {
-  id: string
+  material: Partial<Element>
   width: number
 }
 
@@ -28,17 +28,25 @@ export default function SynthesisSection ({
   })
   const segments: Segment[] = []
   for (const segment of street.segments) {
-    const idx = segments.findIndex((e) => e.id === segment.material)
-    const material = elementArray.find((e) => e.id === segment.material)
+    const idx = segments.findIndex((e) => e.material?.id === segment.material)
+    let material: Partial<Element> = elementArray.find(
+      (e) => e.id === segment.material
+    )
     if (!material) {
-      console.log('Unknown material ID')
-      continue
+      if (typeof segment.material === 'string') {
+        console.log('Unknown material ID')
+        continue
+      }
+      material = {
+        ...segment.material,
+        nom: 'Valeur Manuelle'
+      }
     }
     if (idx >= 0) {
       segments[idx].width += segment.width
     } else {
       segments.push({
-        id: segment.material,
+        material,
         width: segment.width
       })
     }
@@ -91,6 +99,19 @@ export default function SynthesisSection ({
           sum.thirtyYearsCo2 += lamp.co230
         }
       }
+      if (segment.variantString === 'tpc-dba') {
+        const dba = materialArray.find(
+          (material) => material.nom === 'DBA Béton'
+        )
+        if (!dba) {
+          console.error('dba not found')
+        } else {
+          sum.price += dba.eur
+          sum.co2 += dba.co2
+          sum.thirtyYearsPrice += dba.eur30
+          sum.thirtyYearsCo2 += dba.co230
+        }
+      }
       // puis on ajoute à chacun des accumulateurs le coût linéaire multiplié par la largeur
       return {
         price: sum.price + material.eur * segment.width,
@@ -105,7 +126,10 @@ export default function SynthesisSection ({
     <>
       <Text style={styles.title}>Synthèse</Text>
       <View style={styles.table}>
-        <View style={{ ...styles.tableRow, backgroundColor: '#e7e3e4' }}>
+        <View
+          style={{ ...styles.tableRow, backgroundColor: '#e7e3e4' }}
+          wrap={false}
+        >
           <Text style={{ ...styles.tableCell, width: '21%' }} />
           <Text style={{ ...styles.tableCell, width: '11%' }}>Largeur</Text>
           <Text style={{ ...styles.tableCell, width: '17%' }}>
@@ -119,14 +143,9 @@ export default function SynthesisSection ({
             Prix € sur 30 ans
           </Text>
         </View>
-        {segments.map((elem) => {
-          const material = elementArray.find((e) => e.id === elem.id)
-          if (!material) {
-            console.log('Unknown material ID')
-            return <Fragment key={elem.id} />
-          }
+        {segments.map((elem, id) => {
           return (
-            <View style={{ ...styles.tableRow }} key={elem.id}>
+            <View style={{ ...styles.tableRow }} key={id} wrap={false}>
               <Text
                 style={{
                   ...styles.tableCell,
@@ -135,34 +154,43 @@ export default function SynthesisSection ({
                   fontWeight: 'bold'
                 }}
               >
-                {material.category +
-                  ' - ' +
-                  material.nom +
-                  ' - ' +
-                  material.roulement +
-                  (material.forme !== undefined ? '/' + material.forme : '') +
-                  (material.base !== undefined ? '/' + material.base : '')}
+                {(elem.material.category !== undefined
+                  ? elem.material.category + ' - '
+                  : '') +
+                  elem.material.nom +
+                  (elem.material.roulement !== undefined
+                    ? ' - ' + elem.material.roulement.split(' - ')[0]
+                    : '') +
+                  (elem.material.forme !== undefined
+                    ? '/' + elem.material.forme.split(' - ')[0]
+                    : '') +
+                  (elem.material.base !== undefined
+                    ? '/' + elem.material.base.split(' - ')[0]
+                    : '')}
               </Text>
               <CustomText style={{ ...styles.tableCell, width: '11%' }}>
                 {numberFormat.format(elem.width)} m
               </CustomText>
               <CustomText style={{ ...styles.tableCell, width: '17%' }}>
-                {numberFormat.format(elem.width * material.co2)} kgCO2
+                {numberFormat.format(elem.width * elem.material.co2)} kgCO2éq
               </CustomText>
               <CustomText style={{ ...styles.tableCell, width: '17%' }}>
-                {numberFormat.format(elem.width * material.co230)} kgCO2
+                {numberFormat.format(elem.width * elem.material.co230)} kgCO2éq
               </CustomText>
               <CustomText style={{ ...styles.tableCell, width: '17%' }}>
-                {numberFormat.format(elem.width * material.eur)} €
+                {numberFormat.format(elem.width * elem.material.eur)} €
               </CustomText>
               <CustomText style={{ ...styles.tableCell, width: '17%' }}>
-                {numberFormat.format(elem.width * material.eur30)} €
+                {numberFormat.format(elem.width * elem.material.eur30)} €
               </CustomText>
             </View>
           )
         })}
 
-        <View style={{ ...styles.tableRow, backgroundColor: '#ffe4ce' }}>
+        <View
+          style={{ ...styles.tableRow, backgroundColor: '#ffe4ce' }}
+          wrap={false}
+        >
           <Text
             style={{ ...styles.tableCell, width: '21%', fontWeight: 'bold' }}
           >
@@ -176,12 +204,12 @@ export default function SynthesisSection ({
           <CustomText
             style={{ ...styles.tableCell, width: '17%', fontWeight: 'bold' }}
           >
-            {numberFormat.format(total.co2)} kgCO2/ml
+            {numberFormat.format(total.co2)} kgCO2éq/ml
           </CustomText>
           <CustomText
             style={{ ...styles.tableCell, width: '17%', fontWeight: 'bold' }}
           >
-            {numberFormat.format(total.thirtyYearsCo2)} kgCO2/ml
+            {numberFormat.format(total.thirtyYearsCo2)} kgCO2éq/ml
           </CustomText>
           <CustomText
             style={{ ...styles.tableCell, width: '17%', fontWeight: 'bold' }}

@@ -36,6 +36,7 @@ import {
   DRAGGING_TYPE_RESIZE
 } from './constants'
 import { segmentsChanged } from './view'
+import { getSegmentLookup } from '~src/segments/segment-dict.js'
 
 export const draggingResize = {
   segmentEl: null,
@@ -607,7 +608,22 @@ export function createPaletteItemDragSpec (segment) {
         elevation = variantInfo.elevation
       }
 
-      const material = segment.defaultMaterial
+      const lookup = getSegmentLookup(type, variantString)
+      let material
+      if (!lookup?.components?.materials?.length) {
+        material = store
+          .getState()
+          .costs.elements.filter(
+            (element) => element.category === segment.category
+          )[0]?.id
+      } else {
+        material = store
+          .getState()
+          .costs.elements.find(
+            (element) => element.nom === lookup.components.materials[0]
+          )?.id
+      }
+
       const category = segment.category
 
       return {

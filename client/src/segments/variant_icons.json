@@ -241,21 +241,9 @@
     }
   },
   "divider-type": {
-    "median": {
-      "id": "median",
-      "title": "Median"
-    },
-    "striped-buffer": {
-      "id": "buffer",
-      "title": "Striped buffer"
-    },
     "planting-strip": {
       "id": "grass",
       "title": "Planting strip"
-    },
-    "planter-box": {
-      "id": "planter-box",
-      "title": "Planter box"
     },
     "bush": {
       "id": "bush",
@@ -264,32 +252,6 @@
     "flowers": {
       "id": "flowers",
       "title": "Planting strip with flowers"
-    },
-    "big-tree": {
-      "id": "tree",
-      "title": "Planting strip with a tree"
-    },
-    "palm-tree": {
-      "id": "palm-tree",
-      "title": "Planting strip with a palm tree"
-    },
-    "bollard": {
-      "id": "bollard",
-      "title": "Bollard"
-    },
-    "dome": {
-      "id": "dome",
-      "title": "Traffic exclusion dome"
-    }
-  },
-  "crosswalk-type": {
-    "zebra-crossing": {
-      "id": "buffer",
-      "title": "Crosswalk"
-    },
-    "zebra-crossing-bike": {
-      "id": "buffer",
-      "title": "Bike crossing"
     }
   },
   "orientation": {
@@ -324,11 +286,6 @@
       "color": "#292a29",
       "title": "Asphalt"
     },
-    "colored": {
-      "id": "asphalt",
-      "color": "#9b1f22",
-      "title": "Red lane"
-    },
     "shared": {
       "id": "sharrow",
       "title": "Shared bus/bike lane"
@@ -348,49 +305,6 @@
       "id": "av-shuttle",
       "title": "Autonomous shuttle",
       "unlockCondition": "SUBSCRIBE"
-    }
-  },
-  "brt-asphalt": {
-    "regular": {
-      "id": "asphalt",
-      "color": "#292a29",
-      "title": "Asphalt"
-    },
-    "red": {
-      "id": "asphalt",
-      "color": "#9b1f22",
-      "title": "Red lane"
-    }
-  },
-  "brt-station-orientation": {
-    "left": {
-      "id": "orientation-left",
-      "title": "Left"
-    },
-    "right": {
-      "id": "orientation-right",
-      "title": "Right"
-    },
-    "center": {
-      "id": "orientation-center",
-      "title": "Center"
-    }
-  },
-  "bike-asphalt": {
-    "regular": {
-      "id": "asphalt",
-      "color": "#292a29",
-      "title": "Asphalt"
-    },
-    "green": {
-      "id": "asphalt",
-      "color": "#2b6750",
-      "title": "Green lane"
-    },
-    "red": {
-      "id": "asphalt",
-      "color": "#9b1f22",
-      "title": "Red lane "
     }
   },
   "transit-shelter-elevation": {
@@ -583,23 +497,14 @@
       "title": "Street level"
     }
   },
-  "temporary-barrier-type": {
-    "traffic-cone": {
-      "id": "traffic-cone",
-      "title": "Traffic cone"
-    },
-    "barricade": {
-      "id": "barricade",
-      "title": "Barricade"
+  "tpc-type": {
+    "striped-buffer": {
+      "id": "buffer",
+      "title": "Striped buffer"
     },
     "jersey-barrier-concrete": {
       "id": "jersey-barrier",
       "title": "Jersey barrier (concrete)"
-    },
-    "jersey-barrier-plastic": {
-      "id": "jersey-barrier",
-      "color": "#ef9c74",
-      "title": "Jersey barrier (plastic)"
     }
   },
   "drainage-sides": {

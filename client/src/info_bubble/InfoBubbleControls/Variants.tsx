@@ -115,7 +115,7 @@ function Variants (props: VariantsProps): React.ReactElement | null {
             (material) => material.nom === icon.title
           )
           handler = () => {
-            dispatch(changeSegmentVariant(position, set, selection))
+            dispatch(changeSegmentVariant(position, set, selection, elements))
             dispatch(
               changeSegmentProperties(position, { material: element.id })
             )
@@ -123,7 +123,7 @@ function Variants (props: VariantsProps): React.ReactElement | null {
           }
         } else {
           handler = () => {
-            dispatch(changeSegmentVariant(position, set, selection))
+            dispatch(changeSegmentVariant(position, set, selection, elements))
             segmentsChanged()
           }
         }

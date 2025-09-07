@@ -37,10 +37,11 @@ slices:
       lamp-orientation: right
       lamp-type: modern
     width: 0.6
-  - type: brt-lane
+  - type: bus-lane
     variant:
       direction: inbound
-      brt-asphalt: regular
+      bus-asphalt: regular
+      bus-type: typical
     width: 3.6
   - type: drive-lane
     variant:
@@ -66,7 +67,6 @@ slices:
   - type: bike-lane
     variant:
       bike-direction: outbound
-      bike-asphalt: green
       elevation: road
     width:
       metric: 2

@@ -8,6 +8,7 @@ import {
   changeSegmentVariant
 } from '~src/store/slices/street'
 import { segmentsChanged } from '~src/segments/view'
+import { getSegmentLookup } from '~src/segments/segment-dict'
 
 interface MaterialControlProps {
   position: number
@@ -33,6 +34,7 @@ export default function MaterialControl ({
 }: MaterialControlProps): React.ReactElement {
   const elements = useSelector((state) => elementsSelector(state, segment))
   const dispatch = useDispatch()
+  const segmentLookup = getSegmentLookup(segment.type, segment.variantString)
 
   function getButtonOnClickHandler (selection: string): () => void {
     return (): void => {
@@ -75,6 +77,15 @@ export default function MaterialControl ({
     },
     [getButtonOnClickHandler, segment.material]
   )
+
+  if (!segmentLookup) {
+    console.error('Variant not found')
+    return <></>
+  }
+  if (segmentLookup?.components?.materials?.length === 1) {
+    // Only one choice of material - can't change
+    return <></>
+  }
 
   return <>{elements.map((elem) => renderButtons(elem))}</>
 }

@@ -48,7 +48,6 @@ export default function DetailSection ({
             width={segment.width}
             materials={materialArray}
             elements={elementArray}
-            key={segment.id}
           />
           <View style={{ height: 10 }} />
         </Fragment>

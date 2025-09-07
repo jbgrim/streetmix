@@ -63,6 +63,19 @@ function StreetCost (): React.ReactElement {
               sum.thirtyYearsCo2 += lamp.co230
             }
           }
+          if (segment.variantString === 'tpc-dba') {
+            const dba = materials.find(
+              (material) => material.nom === 'DBA Béton'
+            )
+            if (!dba) {
+              console.error('dba not found')
+            } else {
+              sum.price += dba.eur
+              sum.co2 += dba.co2
+              sum.thirtyYearsPrice += dba.eur30
+              sum.thirtyYearsCo2 += dba.co230
+            }
+          }
           // puis on ajoute à chacun des accumulateurs le coût linéaire multiplié par la largeur
           return {
             price: sum.price + material.eur * segment.width,
@@ -74,7 +87,7 @@ function StreetCost (): React.ReactElement {
         },
         { price: 0, co2: 0, thirtyYearsPrice: 0, thirtyYearsCo2: 0 }
       ),
-    [elements, street.segments]
+    [elements, materials, street.segments]
   )
   const { data: creatorProfile } = useGetUserQuery(street.creatorId)
 

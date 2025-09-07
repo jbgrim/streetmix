@@ -22,7 +22,7 @@ export default function DetailRow ({ material, locale }: DetailRowProps) {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2
   })
-  let height = material.nom.split(' - ').pop()
+  let [name, height] = material.nom.split(' - ')
   if (material.nom === 'Terrassement') {
     height = '55cm'
   }
@@ -32,7 +32,7 @@ export default function DetailRow ({ material, locale }: DetailRowProps) {
   // compute lifespan based on the price
   const lifespan = (30 * material.eur) / material.eur30
   return (
-    <View style={{ ...styles.tableRow }}>
+    <View style={{ ...styles.tableRow }} wrap={false}>
       <Text
         style={{
           ...styles.tableCell,
@@ -40,7 +40,7 @@ export default function DetailRow ({ material, locale }: DetailRowProps) {
           backgroundColor: '#' + material.color
         }}
       >
-        {material.nom}
+        {name}
       </Text>
       <CustomText style={{ ...styles.tableCell, width: '15%' }}>
         {height}

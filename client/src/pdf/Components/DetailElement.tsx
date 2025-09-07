@@ -6,7 +6,7 @@ import { CustomText } from '~src/pdf/Components/CustomText'
 import DetailRow from '~src/pdf/Components/DetailRow'
 
 interface DetailElementProps {
-  element: Element
+  element?: Element
   width: number
   materials: Material[]
   elements: Element[]
@@ -20,14 +20,20 @@ export default function DetailElement ({
   elements,
   locale
 }: DetailElementProps): React.ReactElement {
+  if (!element) {
+    return <></>
+  }
+
   const numberFormat = Intl.NumberFormat(locale, {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2
   })
 
   const slices: Material[] = []
+
   if (element.roulement && element.nom !== 'Arbre') {
     const mat = materials.find((material) => material.nom === element.roulement)
+    console.info(element.nom, mat)
     if (mat) {
       slices.push(mat)
     }
@@ -48,9 +54,12 @@ export default function DetailElement ({
   if (mat) {
     slices.push(mat)
   }
-
+  console.info(slices)
   const total = slices.reduce(
     (sum, slice) => {
+      if (slice.nom === 'DBA Béton') {
+        return sum
+      }
       // on ajoute à chacun des accumulateurs le coût linéaire
       return {
         price: sum.price + slice.eur,
@@ -61,6 +70,7 @@ export default function DetailElement ({
     },
     { price: 0, co2: 0, thirtyYearsPrice: 0, thirtyYearsCo2: 0 }
   )
+
   let fixe = { eur: 0, co2: 0, eur30: 0, co230: 0 }
   if (element.nom === 'Arbre') {
     fixe = {
@@ -70,10 +80,21 @@ export default function DetailElement ({
       co230: element.co230
     }
   }
+  if (element.nom === 'TPC DBA') {
+    const dba = materials.find((material) => material.nom === 'DBA Béton')
+    if (dba) {
+      fixe = {
+        eur: dba.eur,
+        co2: dba.co2,
+        eur30: dba.eur30,
+        co230: dba.co230
+      }
+    }
+  }
   return (
     <>
       <View style={styles.table}>
-        <View style={{ ...styles.tableRow }}>
+        <View style={{ ...styles.tableRow }} wrap={false}>
           <Text style={{ ...styles.tableCell, width: '25%' }}>
             {element.nom}
           </Text>
@@ -125,10 +146,16 @@ export default function DetailElement ({
             locale={locale}
           />
         )}
+        {element.nom === 'TPC DBA' && (
+          <DetailRow
+            material={materials.find((mat) => mat.nom === 'DBA Béton')}
+            locale={locale}
+          />
+        )}
         {slices.map((mat) => (
           <DetailRow material={mat} locale={locale} key={mat.id} />
         ))}
-        <View style={{ ...styles.tableRow }}>
+        <View style={{ ...styles.tableRow }} wrap={false}>
           <Text style={{ ...styles.tableCell, width: '52%' }}>
             Valeur pour <Text style={{ fontWeight: 'bold' }}>1m</Text>
           </Text>
@@ -173,7 +200,7 @@ export default function DetailElement ({
             {numberFormat.format(total.thirtyYearsPrice + fixe.eur30)} €
           </CustomText>
         </View>
-        <View style={{ ...styles.tableRow }}>
+        <View style={{ ...styles.tableRow }} wrap={false}>
           <Text style={{ ...styles.tableCell, width: '52%' }}>
             Valeur pour <Text style={{ fontWeight: 'bold' }}>{width}m</Text>
           </Text>

@@ -19,9 +19,9 @@ boundary:
     floors: 0
     elevation: 1
 slices:
-  - type: divider
+  - type: sidewalk-tree
     variant:
-      divider-type: big-tree
+      divider-type: big
     width:
       metric: 1
       imperial: 3
@@ -35,9 +35,9 @@ slices:
       imperial: 14
     elevation: 1
     label: Park
-  - type: divider
+  - type: sidewalk-tree
     variant:
-      divider-type: big-tree
+      divider-type: big
     width:
       metric: 1
       imperial: 3
@@ -61,9 +61,9 @@ slices:
       metric: 0.5
       imperial: 2
     elevation: 1
-  - type: divider
+  - type: sidewalk-tree
     variant:
-      divider-type: big-tree
+      divider-type: big
     width:
       metric: 2.5
       imperial: 8

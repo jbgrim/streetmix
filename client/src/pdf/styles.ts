@@ -1,9 +1,18 @@
-import { StyleSheet } from '@react-pdf/renderer'
+import { StyleSheet, Font } from '@react-pdf/renderer'
+
+Font.register({
+  family: 'Roboto',
+  src: 'http://fonts.gstatic.com/s/roboto/v16/zN7GBFwfMP4uA6AR0HCoLQ.ttf',
+  fontStyle: 'normal',
+  fontWeight: 'normal'
+})
 
 export const styles = StyleSheet.create({
   page: {
     backgroundColor: '#FFFFFF',
-    fontSize: '11pt'
+    fontSize: '11pt',
+    paddingTop: '40px',
+    paddingBottom: '40px'
   },
   header: {
     justifyContent: 'space-between',
@@ -37,16 +46,17 @@ export const styles = StyleSheet.create({
     marginBottom: 3,
     marginTop: 6
   },
-  table: {
-    borderBottom: '1px solid black',
-    borderRight: '1px solid black'
-  },
+  table: {},
   tableRow: {
     flexDirection: 'row',
-    alignItems: 'stretch'
+    alignItems: 'stretch',
+    fontFamily: 'Roboto',
+    borderTop: '1px solid black',
+    borderRight: '1px solid black',
+    borderBottom: '1px solid black',
+    marginBottom: -1
   },
   tableCell: {
-    borderTop: '1px solid black',
     borderLeft: '1px solid black',
     padding: '3px',
     textAlign: 'center'

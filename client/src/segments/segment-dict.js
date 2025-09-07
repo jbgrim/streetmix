@@ -18,7 +18,7 @@ export const COMPONENT_GROUPS = {
  *
  * @param {string} type
  * @param {string} variant
- * @returns {object|boolean} segmentLookup - returns an object in the shape of:
+ * @returns {object|false} segmentLookup - returns an object in the shape of:
  *   { details, components: { lanes, objects, vehicles } } or `false` if not found.
  */
 export function getSegmentLookup (type, variant) {

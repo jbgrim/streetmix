@@ -175,36 +175,15 @@ turn-lane-orientation:
     id: turn-lane-shared
     title: Shared
 divider-type:
-  median:
-    id: median
-    title: Median
-  striped-buffer:
-    id: buffer
-    title: Striped buffer
   planting-strip:
     id: grass
     title: Planting strip
-  planter-box:
-    id: planter-box
-    title: Planter box
   bush:
     id: bush
     title: Planting strip with a bush
   flowers:
     id: flowers
     title: Planting strip with flowers
-  big-tree:
-    id: tree
-    title: Planting strip with a tree
-  palm-tree:
-    id: palm-tree
-    title: Planting strip with a palm tree
-  bollard:
-    id: bollard
-    title: Bollard
-  dome:
-    id: dome
-    title: Traffic exclusion dome
 crosswalk-type:
   zebra-crossing:
     id: buffer
@@ -425,20 +404,13 @@ elevation:
   road:
     id: elevation-lower
     title: Street level
-temporary-barrier-type:
-  traffic-cone:
-    id: traffic-cone
-    title: Traffic cone
-  barricade:
-    id: barricade
-    title: Barricade
+tpc-type:
+  striped-buffer:
+    id: buffer
+    title: Striped buffer
   jersey-barrier-concrete:
     id: jersey-barrier
     title: Jersey barrier (concrete)
-  jersey-barrier-plastic:
-    id: jersey-barrier
-    color: "#ef9c74"
-    title: Jersey barrier (plastic)
 drainage-sides:
   slanted:
     id: drainage-slanted

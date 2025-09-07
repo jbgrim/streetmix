@@ -238,7 +238,7 @@ describe('street reducer', () => {
             }
           ]
         },
-        changeSegmentVariant(2, 'direction', 'outbound')
+        changeSegmentVariant(2, 'direction', 'outbound', [])
       )
     ).toEqual({
       segments: [

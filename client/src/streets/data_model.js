@@ -24,6 +24,7 @@ import { createNewUndoIfNecessary, unifyUndoStack } from './undo_stack'
 import { updateLastStreetInfo, scheduleSavingStreetToServer } from './xhr'
 import defaultStreetTemplate from './templates/default.yaml'
 import emptyStreetTemplate from './templates/empty.yaml'
+import { getSegmentLookup } from '~src/segments/segment-dict.js'
 
 // TODO: put together with other measurement conversion code?
 const ROUGH_CONVERSION_RATE = (10 / 3) * 0.3048
@@ -182,6 +183,21 @@ function processTemplateSlices (slices, units) {
     slice.elevation = variantInfo.elevation
     slice.warnings = [false]
     slice.category = variantInfo.category
+
+    const lookup = getSegmentLookup(slice.type, slice.variantString)
+    if (!lookup?.components?.materials?.length) {
+      slice.material = store
+        .getState()
+        .costs.elements.filter(
+          (element) => element.category === slice.category
+        )[0]?.id
+    } else {
+      slice.material = store
+        .getState()
+        .costs.elements.find(
+          (element) => element.nom === lookup.components.materials[0]
+        )?.id
+    }
 
     processed.push(slice)
   }

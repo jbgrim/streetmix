@@ -56,10 +56,10 @@ slices:
     width:
       metric: 4
       imperial: 13
-  - type: turn-lane
+  - type: drive-lane
     variant:
       direction: outbound
-      turn-lane-orientation: shared
+      car-type: car
     width:
       metric: 4
       imperial: 14
